@@ -46,7 +46,7 @@ The length field can be bound to a Whole Number field to give visibility of how 
 
 ### Image Border
 
-An image border can be displayed around the image to give an indication of the white (or empty) space included in the image
+A border can be displayed around the image to give an indication of any white (or empty) space included
 
 <img src="./img/ConfigureImageBorder.png">
 
