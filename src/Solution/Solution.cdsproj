@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
 
   <PropertyGroup>
-    <Name>Solution</Name>
+    <Name>ImageControl</Name>
     <ProjectGuid>c0619df0-c4f9-4c80-b1da-111d1f9912b8</ProjectGuid>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
