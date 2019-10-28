@@ -30,3 +30,9 @@
 .image-border {
   border: 1px solid black;
 }
+
+.imageControl-label {
+  line-height: 3.5;
+  padding: 15px;
+  border: 1px solid #555555;
+}
