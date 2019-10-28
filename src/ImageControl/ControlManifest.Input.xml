@@ -3,7 +3,7 @@
   <control 
       namespace="Cathal" 
       constructor="ImageControl" 
-      version="0.1.1" 
+      version="0.1.2" 
       display-name-key="ImageControl_Display_Key" 
       description-key="ImageControl_Desc_Key" 
       control-type="standard">
@@ -49,7 +49,7 @@
 
     <resources>
       <code path="index.ts" order="1"/>      
-      <resx path="strings/ImageControl.1033.resx" version="1.1.0" />
+      <resx path="strings/ImageControl.1033.resx" version="1.1.1" />
       <css path="css/ImageControl.css" order="1" />
     </resources>
 

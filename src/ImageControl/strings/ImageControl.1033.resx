@@ -126,4 +126,8 @@
     <value>Image content is greater than the maximum size of a Multiple Lines of Text field. A smaller image is required.</value>
   </data>
 
+  <data name="ImageTripleClickToClear_message" xml:space="preserve">
+    <value>Triple click to clear.</value>
+  </data>
+
 </root>

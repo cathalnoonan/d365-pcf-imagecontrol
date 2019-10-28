@@ -37,7 +37,8 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
     FileTypeError_message: "FileTypeError_message",
     FieldMetadataMissingError_message: "FieldMetadataMissingError_message",
     FieldLengthError_message: "FieldLengthError_message",
-    MaxFieldLengthError_message: "MaxFieldLengthError_message"
+    MaxFieldLengthError_message: "MaxFieldLengthError_message",
+    ImageTripleClickToClear_message: "ImageTripleClickToClear_message"
   };
 
   /** 
@@ -57,6 +58,8 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
     this.onDropSuccess = this.onDropSuccess.bind(this);
     this.validateFieldLength = this.validateFieldLength.bind(this);
     this.clearButtonClick = this.clearButtonClick.bind(this);
+    this.imgOnClick = this.imgOnClick.bind(this);
+    this.clearImage = this.clearImage.bind(this);
   }
 
   /**
@@ -167,6 +170,7 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
     if (this.context.parameters.imageBorder.raw === this.Constants.Yes) {
       this.img.classList.add(this.CSSClasses.ImageBorder);
     }
+    this.img.title = this.context.resources.getString(this.ResourceStrings.ImageTripleClickToClear_message);
     imageControlContainer.appendChild(this.img);
 
     this.label = <HTMLLabelElement>document.createElement("label");
@@ -244,12 +248,14 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
     this.container.ondragover = this.onDragOver;
     this.container.ondrop = this.onDrop;
     this.clearButton.onclick = this.clearButtonClick;
+    this.img.onclick = this.imgOnClick;
   }
 
   private removeEventListeners(): void {
     this.container.ondragover = null;
     this.container.ondrop = null;
     this.clearButton.onclick = null;
+    this.img.onclick = null;
   }
 
   private toBase64(file: File): Promise<string> {
@@ -286,6 +292,17 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
   }
 
   private clearButtonClick(ev: MouseEvent): void {
+    this.clearImage();
+  }
+
+  private imgOnClick(ev: MouseEvent): void {
+    // On triple click
+    if (ev.detail === 3) {
+      this.clearImage();
+    }
+  }
+
+  private clearImage() {
     this.context.parameters.field.raw = "";
     this.updateView(this.context);
     this.notifyOutputChanged();
