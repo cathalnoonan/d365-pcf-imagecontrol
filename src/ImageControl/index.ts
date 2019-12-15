@@ -11,7 +11,12 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
   private img: HTMLImageElement;
   private label: HTMLLabelElement;
   private clearButton: HTMLButtonElement;
+  
+  // Field properties
   private fieldMetadata: ComponentFramework.PropertyHelper.FieldPropertyMetadata.StringMetadata | undefined;
+  private editable: boolean;
+  private readable: boolean;
+  private readonly: boolean;
 
   private CSSClasses = {
     Hidden: "hidden",
@@ -76,6 +81,13 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
     this.container = container;
     
     this.fieldMetadata = this.context.parameters.field.attributes;
+    this.readonly = this.context.mode.isControlDisabled;
+    this.readable = this.context.parameters.field.security ? this.context.parameters.field.security.readable : true;
+    this.editable = this.context.parameters.field.security ? this.context.parameters.field.security.editable : true;
+
+    if (!this.readable) {
+      return;
+    }
 
     this.createElements();
     this.addEventListeners();
@@ -88,6 +100,14 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
    */
   public updateView(context: ComponentFramework.Context<IInputs>): void {
     this.context = context;
+
+    this.readonly = this.context.mode.isControlDisabled;
+    this.readable = this.context.parameters.field.security ? this.context.parameters.field.security.readable : true;
+    this.editable = this.context.parameters.field.security ? this.context.parameters.field.security.editable : true;
+
+    if (!this.readable) {
+      return;
+    }
 
     let error: boolean = false;
     if (!context.parameters || 
@@ -123,7 +143,7 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
       if (this.img.classList.contains(hidden)) {
         this.img.classList.remove(hidden);
       }
-      if (this.clearButton.classList.contains(hidden)) {
+      if (this.clearButton.classList.contains(hidden) && (!this.readonly || !this.editable)) {
         this.clearButton.classList.remove(hidden);
       }
     }
@@ -245,6 +265,12 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
   }
 
   private addEventListeners(): void {
+    if (this.readonly) {
+      return;
+    }
+    if (this.context.parameters.field.security && !this.context.parameters.field.security.editable) {
+      return;
+    }
     this.container.ondragover = this.onDragOver;
     this.container.ondrop = this.onDrop;
     this.clearButton.onclick = this.clearButtonClick;
