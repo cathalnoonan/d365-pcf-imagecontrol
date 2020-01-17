@@ -114,7 +114,7 @@
     <value>Only dragging/dropping one file is supported.</value>
   </data>
   <data name="FileTypeError_message" xml:space="preserve">
-    <value>This contol only works with PNG images.</value>
+    <value>This control only works with PNG images.</value>
   </data>
   <data name="FieldMetadataMissingError_message" xml:space="preserve">
     <value>Couldn\'t find the metadata of the field to validate the length.</value>
