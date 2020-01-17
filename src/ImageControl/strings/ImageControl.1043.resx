@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" 
+    xmlns="" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  
+  <data name="ImageControl_Display_Key" xml:space="preserve">
+    <value>Beeldcontrole</value>
+  </data>
+  <data name="ImageControl_Desc_Key" xml:space="preserve">
+    <value>Een afbeeldingsbesturingselement voor gebruik met meerdere regels tekstveld om PNG-afbeeldingen op het formulier weer te geven</value>
+  </data>
+
+  <data name="Field_Display_Key" xml:space="preserve">
+    <value>Veld</value>
+  </data>
+  <data name="Field_Desc_Key" xml:space="preserve">
+    <value>Meerdere regels tekstveld dat het besturingselement gebruikt</value>
+  </data>
+  <data name="Length_Display_Key" xml:space="preserve">
+    <value>Veldlengte</value>
+  </data>
+  <data name="Length_Desc_Key" xml:space="preserve">
+    <value>Lengte van de afbeeldingsinhoud die is ingevoerd in het besturingselement</value>
+  </data>
+  <data name="ImageBorder_Display_Key" xml:space="preserve">
+    <value>Afbeeldingsrand</value>
+  </data>
+  <data name="ImageBorder_Desc_Key" xml:space="preserve">
+    <value>Schakel een rand rond de afbeelding in het besturingselement in of uit</value>
+  </data>
+  <data name="ImageBorder_Yes_Display_Key" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="ImageBorder_Yes_Desc_Key" xml:space="preserve">
+    <value>Toont een rand rond de afbeelding</value>
+  </data>
+  <data name="ImageBorder_No_Display_Key" xml:space="preserve">
+    <value>Nee</value>
+  </data>
+  <data name="ImageBorder_No_Desc_Key" xml:space="preserve">
+    <value>Toont geen rand rond de afbeelding</value>
+  </data>
+
+  <data name="DragImageHere_message" xml:space="preserve">
+    <value>Sleep een afbeelding hier naartoe</value>
+  </data>
+  <data name="ClickToClear_message" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+
+  <data name="NoFileError_message" xml:space="preserve">
+    <value>Er is geen bestand gevonden in slepen en neerzetten.</value>
+  </data>
+  <data name="MultipleFileError_message" xml:space="preserve">
+    <value>Alleen slepen en neerzetten van één bestand wordt ondersteund.</value>
+  </data>
+  <data name="FileTypeError_message" xml:space="preserve">
+    <value>Dit besturingselement werkt alleen met PNG-afbeeldingen.</value>
+  </data>
+  <data name="FieldMetadataMissingError_message" xml:space="preserve">
+    <value>Kon de metagegevens van het veld niet vinden om de lengte te valideren.</value>
+  </data>
+  <data name="FieldLengthError_message" xml:space="preserve">
+    <value>De inhoud van de afbeelding is groter dan de grootte van het veld. De grootte van het veld moet worden vergroot of er moet een kleinere afbeelding worden gebruikt.</value>
+  </data>
+  <data name="MaxFieldLengthError_message" xml:space="preserve">
+    <value>De inhoud van de afbeelding is groter dan de maximale grootte van een veld Meerdere regels tekst. Een kleinere afbeelding is vereist.</value>
+  </data>
+
+  <data name="ImageTripleClickToClear_message" xml:space="preserve">
+    <value>Klik drie keer om te verwijderen.</value>
+  </data>
+
+</root>
