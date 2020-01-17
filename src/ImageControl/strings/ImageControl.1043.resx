@@ -63,71 +63,71 @@
   </resheader>
   
   <data name="ImageControl_Display_Key" xml:space="preserve">
-    <value>Image Control</value>
+    <value>Beeldcontrole</value>
   </data>
   <data name="ImageControl_Desc_Key" xml:space="preserve">
-    <value>An image control for use with Multiple Lines of Text field to display PNG images on the form</value>
+    <value>Een afbeeldingsbesturingselement voor gebruik met meerdere regels tekstveld om PNG-afbeeldingen op het formulier weer te geven</value>
   </data>
 
   <data name="Field_Display_Key" xml:space="preserve">
-    <value>Field</value>
+    <value>Veld</value>
   </data>
   <data name="Field_Desc_Key" xml:space="preserve">
-    <value>Multiple Lines of Text field that will use the control</value>
+    <value>Meerdere regels tekstveld dat het besturingselement gebruikt</value>
   </data>
   <data name="Length_Display_Key" xml:space="preserve">
-    <value>Length</value>
+    <value>Veldlengte</value>
   </data>
   <data name="Length_Desc_Key" xml:space="preserve">
-    <value>Length of the image content entered to the control</value>
+    <value>Lengte van de afbeeldingsinhoud die is ingevoerd in het besturingselement</value>
   </data>
   <data name="ImageBorder_Display_Key" xml:space="preserve">
-    <value>Image Border</value>
+    <value>Afbeeldingsrand</value>
   </data>
   <data name="ImageBorder_Desc_Key" xml:space="preserve">
-    <value>Enable or disable a border around the image in the control</value>
+    <value>Schakel een rand rond de afbeelding in het besturingselement in of uit</value>
   </data>
   <data name="ImageBorder_Yes_Display_Key" xml:space="preserve">
-    <value>Yes</value>
+    <value>Ja</value>
   </data>
   <data name="ImageBorder_Yes_Desc_Key" xml:space="preserve">
-    <value>Displays a border around the image</value>
+    <value>Toont een rand rond de afbeelding</value>
   </data>
   <data name="ImageBorder_No_Display_Key" xml:space="preserve">
-    <value>No</value>
+    <value>Nee</value>
   </data>
   <data name="ImageBorder_No_Desc_Key" xml:space="preserve">
-    <value>Does not display a border around the image</value>
+    <value>Toont geen rand rond de afbeelding</value>
   </data>
 
   <data name="DragImageHere_message" xml:space="preserve">
-    <value>Drag and drop an image here</value>
+    <value>Sleep een afbeelding hier naartoe</value>
   </data>
   <data name="ClickToClear_message" xml:space="preserve">
-    <value>Clear</value>
+    <value>Verwijderen</value>
   </data>
 
   <data name="NoFileError_message" xml:space="preserve">
-    <value>No file was found in the drag and drop.</value>
+    <value>Er is geen bestand gevonden in slepen en neerzetten.</value>
   </data>
   <data name="MultipleFileError_message" xml:space="preserve">
-    <value>Only dragging/dropping one file is supported.</value>
+    <value>Alleen slepen en neerzetten van één bestand wordt ondersteund.</value>
   </data>
   <data name="FileTypeError_message" xml:space="preserve">
-    <value>This control only works with PNG images.</value>
+    <value>Dit besturingselement werkt alleen met PNG-afbeeldingen.</value>
   </data>
   <data name="FieldMetadataMissingError_message" xml:space="preserve">
-    <value>Couldn\'t find the metadata of the field to validate the length.</value>
+    <value>Kon de metagegevens van het veld niet vinden om de lengte te valideren.</value>
   </data>
   <data name="FieldLengthError_message" xml:space="preserve">
-    <value>Image content is greater than the size of the field. The size of the field should be increased, or a smaller image should be used.</value>
+    <value>De inhoud van de afbeelding is groter dan de grootte van het veld. De grootte van het veld moet worden vergroot of er moet een kleinere afbeelding worden gebruikt.</value>
   </data>
   <data name="MaxFieldLengthError_message" xml:space="preserve">
-    <value>Image content is greater than the maximum size of a Multiple Lines of Text field. A smaller image is required.</value>
+    <value>De inhoud van de afbeelding is groter dan de maximale grootte van een veld Meerdere regels tekst. Een kleinere afbeelding is vereist.</value>
   </data>
 
   <data name="ImageTripleClickToClear_message" xml:space="preserve">
-    <value>Triple click to clear.</value>
+    <value>Klik drie keer om te verwijderen.</value>
   </data>
 
 </root>
