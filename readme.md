@@ -15,6 +15,9 @@ This will allow us to output the image in a word document, as shown in the examp
 
 Import the solution, then open the form editor that you would like to add the control to
 
+The solution can be downloaded from the Releases page
+([link](https://github.com/cathalnoonan/d365-pcf-imagecontrol/releases))
+
 Open the properties of a Multiple Lines of Text field, click `Add Control...`
 
 <img src="./img/FieldProperties.png">
