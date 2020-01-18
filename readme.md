@@ -1,5 +1,5 @@
 # D365 PCF - Image Control (PNG)
-## Image control for Mulitple Lines of Text fields
+## Image control for Multiple Lines of Text fields
 This control can be added as a custom control for a Multiple Lines of Text field to display the contents as an image
 
 <img src="./img/DragAndDropHere.png">
@@ -57,3 +57,15 @@ Selecting `No` will not display a border around the image
 Selecting `Yes` will display a border around the image
 
 <img src="./img/WithBorder.png">
+
+## Building The Project (DIY)
+To build the project, clone the repository and open Visual Studio command prompt in that location
+
+Run the following commands
+- > cd src
+- > npm install
+- > cd Solutions
+- > msbuild /t:build /restore
+
+The solution files will be located at the following directory, relative to the project root
+`src\Solution\bin\Debug`
