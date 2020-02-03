@@ -51,8 +51,8 @@
       <code path="index.ts" order="1"/>      
       <css path="css/ImageControl.css" order="1" />
 
-      <resx path="strings/ImageControl.1033.resx" version="1.1.1" />
       <resx path="strings/ImageControl.1043.resx" version="1.0.0" />
+      <resx path="strings/ImageControl.1033.resx" version="1.1.1" />
     </resources>
 
   </control>
