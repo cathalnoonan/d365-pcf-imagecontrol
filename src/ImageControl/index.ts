@@ -34,7 +34,6 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
     }
 
     private ResourceStrings = {
-        DragImageHere: "DragImageHere_message",
         NoFileError_message: "NoFileError_message",
         DragImageHere_message: "DragImageHere_message",
         ClickToClear_message: "ClickToClear_message",
@@ -47,24 +46,10 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
     };
 
     /** 
-    * Empty constructor.
+     * Empty constructor.
      */
     constructor() {
-        // Bind functions
-        this.addEventListeners = this.addEventListeners.bind(this);
-        this.createElements = this.createElements.bind(this);
-        this.removeEventListeners = this.removeEventListeners.bind(this);
-        this.toBase64 = this.toBase64.bind(this);
-        this.addDataImage = this.addDataImage.bind(this);
-        this.removeDataImage = this.removeDataImage.bind(this);
-        this.alertError = this.alertError.bind(this);
-        this.onDragOver = this.onDragOver.bind(this);
-        this.onDrop = this.onDrop.bind(this);
-        this.onDropSuccess = this.onDropSuccess.bind(this);
-        this.validateFieldLength = this.validateFieldLength.bind(this);
-        this.clearButtonClick = this.clearButtonClick.bind(this);
-        this.imgOnClick = this.imgOnClick.bind(this);
-        this.clearImage = this.clearImage.bind(this);
+
     }
 
     /**
@@ -76,7 +61,6 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
      * @param container If a control is marked control-type='starndard', it will receive an empty div element within which it can render its content.
      */
     public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container: HTMLDivElement) {
-        debugger;
         this.context = context;
         this.notifyOutputChanged = notifyOutputChanged;
         this.container = container;
@@ -110,13 +94,11 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
             return;
         }
 
-        let error: boolean = false;
-        if (!context.parameters ||
-            !context.parameters.field ||
-            !context.parameters.field.raw ||
-            context.parameters.field.raw === this.Constants.Val) {
-            error = true;
-        }
+        // There's an error if we can't find the value, or the value equals the default text
+        // TODO: Evaluate ?. and !. differences
+        const error: boolean =
+            !(context!.parameters!.field!.raw) ||
+            context.parameters.field.raw === this.Constants.Val;
 
         const hidden = this.CSSClasses.Hidden;
         if (error) {
@@ -165,6 +147,7 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
         return {
             field: this.context.parameters.field.raw,
             length: this.context.parameters.field.raw!.length
+            // TODO: Evaluate ?. and !. differences
         };
     }
 
@@ -177,16 +160,16 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
         this.removeEventListeners();
     }
 
-    private createElements(): void {
+    private createElements = (): void => {
         const resources: ComponentFramework.Resources = this.context.resources;
 
         const hidden = this.CSSClasses.Hidden;
 
-        const imageControlContainer = <HTMLDivElement>document.createElement("div");
+        const imageControlContainer = document.createElement("div");
         imageControlContainer.classList.add(this.CSSClasses.ImageControlContainer);
         this.container.appendChild(imageControlContainer);
 
-        this.img = <HTMLImageElement>document.createElement("img");
+        this.img = document.createElement("img");
         this.img.classList.add(hidden);
         if (this.context.parameters.imageBorder.raw === this.Constants.Yes) {
             this.img.classList.add(this.CSSClasses.ImageBorder);
@@ -194,47 +177,42 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
         this.img.title = this.context.resources.getString(this.ResourceStrings.ImageTripleClickToClear_message);
         imageControlContainer.appendChild(this.img);
 
-        this.label = <HTMLLabelElement>document.createElement("label");
+        this.label = document.createElement("label");
         this.label.classList.add(this.CSSClasses.ImageControlLabel);
         this.label.classList.add(hidden);
         this.label.innerText = resources.getString(this.ResourceStrings.DragImageHere_message);
         imageControlContainer.appendChild(this.label);
 
-        const clearButtonContainer = <HTMLDivElement>document.createElement("div");
+        const clearButtonContainer = document.createElement("div");
         clearButtonContainer.classList.add(this.CSSClasses.ClearButtonContainer);
         imageControlContainer.appendChild(clearButtonContainer);
 
-        this.clearButton = <HTMLButtonElement>document.createElement("button");
+        this.clearButton = document.createElement("button");
         this.clearButton.classList.add(hidden);
         this.clearButton.classList.add(this.CSSClasses.ClearButton);
         this.clearButton.innerText = resources.getString(this.ResourceStrings.ClickToClear_message);
         clearButtonContainer.appendChild(this.clearButton);
     }
 
-    private alertError(message: string, details?: string | null): string {
+    private alertError = (message: string, details?: string | null): string => {
         const options: ComponentFramework.NavigationApi.ErrorDialogOptions = {
             message: message
         };
-        if (details) {
-            if (details.trim() !== '') {
-                options.details = details;
-            }
+        if (details && details.trim() !== '') {
+            options.details = details;
         }
         this.context.navigation.openErrorDialog(options);
         return message;
     }
 
-    private onDragOver(ev: DragEvent): void {
+    private onDragOver = (ev: DragEvent): void => {
         ev.preventDefault();
     }
 
-    private onDrop(ev: DragEvent): void {
+    private onDrop = (ev: DragEvent): void => {
         ev.preventDefault();
 
-        if (!ev.dataTransfer) {
-            return;
-        }
-        if (!ev.dataTransfer.files) {
+        if (!ev.dataTransfer || !ev.dataTransfer.files) {
             return;
         }
 
@@ -259,17 +237,14 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
         this.toBase64(file).then(this.validateFieldLength, this.alertError).then(this.onDropSuccess, this.alertError);
     }
 
-    private onDropSuccess(message: string): void {
+    private onDropSuccess = (message: string): void => {
         this.context.parameters.field.raw = this.removeDataImage(message);
         this.updateView(this.context);
         this.notifyOutputChanged();
     }
 
-    private addEventListeners(): void {
-        if (this.readonly) {
-            return;
-        }
-        if (this.context.parameters.field.security && !this.context.parameters.field.security.editable) {
+    private addEventListeners = (): void => {
+        if (this.readonly || this.context.parameters.field.security && !this.context.parameters.field.security.editable) {
             return;
         }
         this.container.ondragover = this.onDragOver;
@@ -278,14 +253,14 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
         this.img.onclick = this.imgOnClick;
     }
 
-    private removeEventListeners(): void {
+    private removeEventListeners = (): void => {
         this.container.ondragover = null;
         this.container.ondrop = null;
         this.clearButton.onclick = null;
         this.img.onclick = null;
     }
 
-    private toBase64(file: File): Promise<string> {
+    private toBase64 = (file: File): Promise<string> => {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.readAsDataURL(file);
@@ -294,42 +269,43 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
         });
     }
 
-    private addDataImage(base64String: string): string {
+    private addDataImage = (base64String: string): string => {
         return "data:image/png;base64," + base64String;
     }
 
-    private removeDataImage(base64String: string): string {
+    private removeDataImage = (base64String: string): string => {
         return base64String.replace("data:image/png;base64,", "");
     }
 
-    private validateFieldLength(text: string): Promise<string> {
+    private validateFieldLength = (text: string): Promise<string> => {
         return new Promise<string>((resolve, reject) => {
             const resources = this.context.resources;
 
+            // Handle the error conditions
             if (!this.fieldMetadata) {
                 reject(resources.getString(this.ResourceStrings.FieldMetadataMissingError_message))
             } else if (text.length > this.Constants.MultipleLineMaxFieldLength) {
                 reject(resources.getString(this.ResourceStrings.MaxFieldLengthError_message));
             } else if (text.length > this.fieldMetadata.MaxLength) {
                 reject(resources.getString(this.ResourceStrings.FieldLengthError_message))
-            } else {
-                resolve(text);
             }
+
+            resolve(text);
         });
     }
 
-    private clearButtonClick(ev: MouseEvent): void {
+    private clearButtonClick = (ev: MouseEvent): void => {
         this.clearImage();
     }
 
-    private imgOnClick(ev: MouseEvent): void {
+    private imgOnClick = (ev: MouseEvent): void => {
         // On triple click
         if (ev.detail === 3) {
             this.clearImage();
         }
     }
 
-    private clearImage() {
+    private clearImage = (): void => {
         this.context.parameters.field.raw = "";
         this.updateView(this.context);
         this.notifyOutputChanged();

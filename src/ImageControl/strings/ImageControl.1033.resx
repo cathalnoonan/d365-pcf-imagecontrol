@@ -1,133 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <xsd:schema id="root" 
-    xmlns="" 
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
+    <xsd:schema id="root" 
+        xmlns="" 
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+        xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+        <xsd:element name="root" msdata:IsDataSet="true">
             <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string" />
+                            <xsd:attribute name="type" type="xsd:string" />
+                            <xsd:attribute name="mimetype" type="xsd:string" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string" />
+                            <xsd:attribute name="name" type="xsd:string" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
             </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  
-  <data name="ImageControl_Display_Key" xml:space="preserve">
-    <value>Image Control</value>
-  </data>
-  <data name="ImageControl_Desc_Key" xml:space="preserve">
-    <value>An image control for use with Multiple Lines of Text field to display PNG images on the form</value>
-  </data>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
 
-  <data name="Field_Display_Key" xml:space="preserve">
-    <value>Field</value>
-  </data>
-  <data name="Field_Desc_Key" xml:space="preserve">
-    <value>Multiple Lines of Text field that will use the control</value>
-  </data>
-  <data name="Length_Display_Key" xml:space="preserve">
-    <value>Length</value>
-  </data>
-  <data name="Length_Desc_Key" xml:space="preserve">
-    <value>Length of the image content entered to the control</value>
-  </data>
-  <data name="ImageBorder_Display_Key" xml:space="preserve">
-    <value>Image Border</value>
-  </data>
-  <data name="ImageBorder_Desc_Key" xml:space="preserve">
-    <value>Enable or disable a border around the image in the control</value>
-  </data>
-  <data name="ImageBorder_Yes_Display_Key" xml:space="preserve">
-    <value>Yes</value>
-  </data>
-  <data name="ImageBorder_Yes_Desc_Key" xml:space="preserve">
-    <value>Displays a border around the image</value>
-  </data>
-  <data name="ImageBorder_No_Display_Key" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="ImageBorder_No_Desc_Key" xml:space="preserve">
-    <value>Does not display a border around the image</value>
-  </data>
+    <data name="ImageControl_Display_Key" xml:space="preserve">
+        <value>Image Control</value>
+    </data>
+    <data name="ImageControl_Desc_Key" xml:space="preserve">
+        <value>An image control for use with Multiple Lines of Text field to display PNG images on the form</value>
+    </data>
 
-  <data name="DragImageHere_message" xml:space="preserve">
-    <value>Drag and drop an image here</value>
-  </data>
-  <data name="ClickToClear_message" xml:space="preserve">
-    <value>Clear</value>
-  </data>
+    <data name="Field_Display_Key" xml:space="preserve">
+        <value>Field</value>
+    </data>
+    <data name="Field_Desc_Key" xml:space="preserve">
+        <value>Multiple Lines of Text field that will use the control</value>
+    </data>
+    <data name="Length_Display_Key" xml:space="preserve">
+        <value>Length</value>
+    </data>
+    <data name="Length_Desc_Key" xml:space="preserve">
+        <value>Length of the image content entered to the control</value>
+    </data>
+    <data name="ImageBorder_Display_Key" xml:space="preserve">
+        <value>Image Border</value>
+    </data>
+    <data name="ImageBorder_Desc_Key" xml:space="preserve">
+        <value>Enable or disable a border around the image in the control</value>
+    </data>
+    <data name="ImageBorder_Yes_Display_Key" xml:space="preserve">
+        <value>Yes</value>
+    </data>
+    <data name="ImageBorder_Yes_Desc_Key" xml:space="preserve">
+        <value>Displays a border around the image</value>
+    </data>
+    <data name="ImageBorder_No_Display_Key" xml:space="preserve">
+        <value>No</value>
+    </data>
+    <data name="ImageBorder_No_Desc_Key" xml:space="preserve">
+        <value>Does not display a border around the image</value>
+    </data>
 
-  <data name="NoFileError_message" xml:space="preserve">
-    <value>No file was found in the drag and drop.</value>
-  </data>
-  <data name="MultipleFileError_message" xml:space="preserve">
-    <value>Only dragging/dropping one file is supported.</value>
-  </data>
-  <data name="FileTypeError_message" xml:space="preserve">
-    <value>This control only works with PNG images.</value>
-  </data>
-  <data name="FieldMetadataMissingError_message" xml:space="preserve">
-    <value>Couldn\'t find the metadata of the field to validate the length.</value>
-  </data>
-  <data name="FieldLengthError_message" xml:space="preserve">
-    <value>Image content is greater than the size of the field. The size of the field should be increased, or a smaller image should be used.</value>
-  </data>
-  <data name="MaxFieldLengthError_message" xml:space="preserve">
-    <value>Image content is greater than the maximum size of a Multiple Lines of Text field. A smaller image is required.</value>
-  </data>
+    <data name="DragImageHere_message" xml:space="preserve">
+        <value>Drag and drop an image here</value>
+    </data>
+    <data name="ClickToClear_message" xml:space="preserve">
+        <value>Clear</value>
+    </data>
 
-  <data name="ImageTripleClickToClear_message" xml:space="preserve">
-    <value>Triple click to clear.</value>
-  </data>
+    <data name="NoFileError_message" xml:space="preserve">
+        <value>No file was found in the drag and drop.</value>
+    </data>
+    <data name="MultipleFileError_message" xml:space="preserve">
+        <value>Only dragging/dropping one file is supported.</value>
+    </data>
+    <data name="FileTypeError_message" xml:space="preserve">
+        <value>This control only works with PNG images.</value>
+    </data>
+    <data name="FieldMetadataMissingError_message" xml:space="preserve">
+        <value>Couldn\'t find the metadata of the field to validate the length.</value>
+    </data>
+    <data name="FieldLengthError_message" xml:space="preserve">
+        <value>Image content is greater than the size of the field. The size of the field should be increased, or a smaller image should be used.</value>
+    </data>
+    <data name="MaxFieldLengthError_message" xml:space="preserve">
+        <value>Image content is greater than the maximum size of a Multiple Lines of Text field. A smaller image is required.</value>
+    </data>
+
+    <data name="ImageTripleClickToClear_message" xml:space="preserve">
+        <value>Triple click to clear.</value>
+    </data>
 
 </root>
