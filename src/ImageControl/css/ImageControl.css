@@ -1,16 +1,23 @@
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .imageControl-container {
     display: inline-block;
+    width: 100%;
 }
 
-.clearButton-container {
+.imageControl-container img {
+    display: block;
+    width: 98%;
+}
+
+.button-container {
     text-align: center;
+    padding: 1em 0% 0% 0%
 }
 
-.clearButton {
+button {
     -webkit-transition-duration: 0.1s;
     /* Safari */
     transition-duration: 0.1s;
@@ -23,7 +30,7 @@
     border: 2px solid #555555;
 }
 
-.clearButton:hover {
+button:hover {
     background-color: #555555;
     color: white;
 }
@@ -36,4 +43,5 @@
     line-height: 3.5;
     padding: 15px;
     border: 1px solid #555555;
+    text-align: center;
 }

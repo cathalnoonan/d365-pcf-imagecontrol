@@ -130,4 +130,14 @@
         <value>Klik drie keer om te verwijderen.</value>
     </data>
 
+    <data name="PickFileButton_message" xml:space="preserve">
+        <value>Kies bestand</value>
+    </data>
+    <data name="OnlyPickOneFile_message" xml:space="preserve">
+        <value>Kies slechts één bestand</value>
+    </data>
+    <data name="OnlyPngImagesSupported_message" xml:space="preserve">
+        <value>Alleen PNG-afbeeldingen worden ondersteund</value>
+    </data>
+
 </root>

@@ -130,4 +130,14 @@
         <value>Triple click to clear.</value>
     </data>
 
+    <data name="PickFileButton_message" xml:space="preserve">
+        <value>Pick file</value>
+    </data>
+    <data name="OnlyPickOneFile_message" xml:space="preserve">
+        <value>Only pick one file</value>
+    </data>
+    <data name="OnlyPngImagesSupported_message" xml:space="preserve">
+        <value>Only PNG Images are supported</value>
+    </data>
+
 </root>

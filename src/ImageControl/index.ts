@@ -9,8 +9,9 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
 
     // Local objects
     private img: HTMLImageElement;
-    private label: HTMLLabelElement;
+    private label: HTMLParagraphElement;
     private clearButton: HTMLButtonElement;
+    private pickFileButton: HTMLButtonElement;
 
     // Field properties
     private fieldMetadata: ComponentFramework.PropertyHelper.FieldPropertyMetadata.StringMetadata | undefined;
@@ -21,8 +22,7 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
     private CSSClasses = {
         Hidden: "hidden",
         ImageControlContainer: "imageControl-container",
-        ClearButton: "clearButton",
-        ClearButtonContainer: "clearButton-container",
+        ButtonContainer: "button-container",
         ImageBorder: "image-border",
         ImageControlLabel: "imageControl-label"
     }
@@ -42,7 +42,9 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
         FieldMetadataMissingError_message: "FieldMetadataMissingError_message",
         FieldLengthError_message: "FieldLengthError_message",
         MaxFieldLengthError_message: "MaxFieldLengthError_message",
-        ImageTripleClickToClear_message: "ImageTripleClickToClear_message"
+        PickFileButton_message: "PickFileButton_message",
+        OnlyPickOneFile_message: "OnlyPickOneFile_message",
+        OnlyPngImagesSupported_message: "OnlyPngImagesSupported_message",
     };
 
     /** 
@@ -94,14 +96,14 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
             return;
         }
 
-        // There's an error if we can't find the value, or the value equals the default text
-        // TODO: Evaluate ?. and !. differences
-        const error: boolean =
-            !(context!.parameters!.field!.raw) ||
-            context.parameters.field.raw === this.Constants.Val;
+        // Don't display the image if we can't find the value, or the value equals the default text
+        const value = 
+            context && context.parameters && context.parameters.field && context.parameters.field.raw;
+        const empty: boolean =
+            !value || value === this.Constants.Val; // empty or default text
 
         const hidden = this.CSSClasses.Hidden;
-        if (error) {
+        if (empty) {
             // Show the label
             if (this.label.classList.contains(hidden)) {
                 this.label.classList.remove(hidden);
@@ -114,6 +116,11 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
             }
             if (!this.clearButton.classList.contains(hidden)) {
                 this.clearButton.classList.add(hidden);
+            }
+
+            // Remove the pickFileButton
+            if (this.pickFileButton.classList.contains(hidden)) {
+                this.pickFileButton.classList.remove(hidden);
             }
         } else {
             // Hide the label
@@ -128,6 +135,11 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
             }
             if (this.clearButton.classList.contains(hidden) && (!this.readonly || !this.editable)) {
                 this.clearButton.classList.remove(hidden);
+            }
+
+            // Hide the pickFileButton
+            if (!this.pickFileButton.classList.contains(hidden)) {
+                this.pickFileButton.classList.add(hidden);
             }
         }
 
@@ -147,7 +159,6 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
         return {
             field: this.context.parameters.field.raw,
             length: this.context.parameters.field.raw!.length
-            // TODO: Evaluate ?. and !. differences
         };
     }
 
@@ -174,29 +185,32 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
         if (this.context.parameters.imageBorder.raw === this.Constants.Yes) {
             this.img.classList.add(this.CSSClasses.ImageBorder);
         }
-        this.img.title = this.context.resources.getString(this.ResourceStrings.ImageTripleClickToClear_message);
         imageControlContainer.appendChild(this.img);
 
-        this.label = document.createElement("label");
+        this.label = document.createElement("p");
         this.label.classList.add(this.CSSClasses.ImageControlLabel);
         this.label.classList.add(hidden);
         this.label.innerText = resources.getString(this.ResourceStrings.DragImageHere_message);
         imageControlContainer.appendChild(this.label);
 
-        const clearButtonContainer = document.createElement("div");
-        clearButtonContainer.classList.add(this.CSSClasses.ClearButtonContainer);
-        imageControlContainer.appendChild(clearButtonContainer);
+        const buttonContainer = document.createElement("div");
+        buttonContainer.classList.add(this.CSSClasses.ButtonContainer);
+        imageControlContainer.appendChild(buttonContainer);
 
         this.clearButton = document.createElement("button");
         this.clearButton.classList.add(hidden);
-        this.clearButton.classList.add(this.CSSClasses.ClearButton);
         this.clearButton.innerText = resources.getString(this.ResourceStrings.ClickToClear_message);
-        clearButtonContainer.appendChild(this.clearButton);
+        buttonContainer.appendChild(this.clearButton);
+
+        this.pickFileButton = document.createElement("button");
+        this.pickFileButton.classList.add(hidden);
+        this.pickFileButton.innerText = resources.getString(this.ResourceStrings.PickFileButton_message);
+        buttonContainer.appendChild(this.pickFileButton);
     }
 
-    private alertError = (message: string, details?: string | null): string => {
+    private alertError = (message: any, details?: string | null): string => {
         const options: ComponentFramework.NavigationApi.ErrorDialogOptions = {
-            message: message
+            message: message && message.message || message
         };
         if (details && details.trim() !== '') {
             options.details = details;
@@ -234,7 +248,10 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
             return;
         }
 
-        this.toBase64(file).then(this.validateFieldLength, this.alertError).then(this.onDropSuccess, this.alertError);
+        this.toBase64(file)
+            .then(this.validateFieldLength)
+            .then(this.onDropSuccess)
+            .catch(this.alertError);
     }
 
     private onDropSuccess = (message: string): void => {
@@ -250,7 +267,7 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
         this.container.ondragover = this.onDragOver;
         this.container.ondrop = this.onDrop;
         this.clearButton.onclick = this.clearButtonClick;
-        this.img.onclick = this.imgOnClick;
+        this.pickFileButton.onclick = this.pickFileButtonClick;
     }
 
     private removeEventListeners = (): void => {
@@ -295,19 +312,46 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
     }
 
     private clearButtonClick = (ev: MouseEvent): void => {
-        this.clearImage();
-    }
-
-    private imgOnClick = (ev: MouseEvent): void => {
-        // On triple click
-        if (ev.detail === 3) {
-            this.clearImage();
-        }
-    }
-
-    private clearImage = (): void => {
         this.context.parameters.field.raw = "";
         this.updateView(this.context);
         this.notifyOutputChanged();
+    }
+
+    private pickFileButtonClick = (ev: MouseEvent): void => {
+        const options = {
+            accept: "image",
+            allowMultipleFiles: false,
+            maximumAllowedFileSize: 1048576 // 1 MB
+        };
+
+        const _this = this;
+
+        this.context.device.pickFile(options)
+            .then(function (response) {
+                return new Promise<string>(function (resolve, reject) {
+                    if (response == null || response.length === 0) {
+                        return;
+                    }
+
+                    if (response.length !== 1) {
+                        _this.alertError(_this.context.resources.getString(_this.ResourceStrings.OnlyPickOneFile_message));
+                        return;
+                    }
+
+                    const { mimeType, fileContent } = response[0];
+
+                    if (mimeType !== "image/png") {
+                        _this.alertError(_this.context.resources.getString(_this.ResourceStrings.OnlyPngImagesSupported_message));
+                        return;
+                    }
+
+                    resolve(fileContent);
+                });
+            })
+            .then(function (fileContent) {
+                return _this.validateFieldLength(fileContent)
+            })
+            .then(result => _this.onDropSuccess(result))
+            .catch(_this.alertError);
     }
 }
