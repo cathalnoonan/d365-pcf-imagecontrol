@@ -72,3 +72,6 @@ Run the following commands
 
 The solution files will be located at the following directory, relative to the project root
 `src\Solution\bin\Debug`
+
+## License
+MIT
