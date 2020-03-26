@@ -67,11 +67,17 @@ To build the project, clone the repository and open Visual Studio command prompt
 Run the following commands
 - > cd src
 - > npm install
-- > cd Solutions
+- > cd ..\solution
 - > msbuild /t:build /restore
 
-The solution files will be located at the following directory, relative to the project root
-`src\Solution\bin\Debug`
+The solution files will be located at the following directory
+`solution\bin\Debug`
+
+To create a production build, run this command following the above steps
+- > msbuild /p:Configuration=Release
+
+The solution files will be located at the following directory
+`solution\bin\Release`
 
 ## License
 MIT
