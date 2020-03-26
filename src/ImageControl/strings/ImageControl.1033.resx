@@ -62,13 +62,13 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
 
+    <!-- Custom -->
     <data name="ImageControl_Display_Key" xml:space="preserve">
         <value>Image Control</value>
     </data>
     <data name="ImageControl_Desc_Key" xml:space="preserve">
         <value>An image control for use with Multiple Lines of Text field to display PNG images on the form</value>
     </data>
-
     <data name="Field_Display_Key" xml:space="preserve">
         <value>Field</value>
     </data>
@@ -99,14 +99,12 @@
     <data name="ImageBorder_No_Desc_Key" xml:space="preserve">
         <value>Does not display a border around the image</value>
     </data>
-
     <data name="DragImageHere_message" xml:space="preserve">
         <value>Drag and drop an image here</value>
     </data>
     <data name="ClickToClear_message" xml:space="preserve">
         <value>Clear</value>
     </data>
-
     <data name="NoFileError_message" xml:space="preserve">
         <value>No file was found in the drag and drop.</value>
     </data>
@@ -116,20 +114,12 @@
     <data name="FileTypeError_message" xml:space="preserve">
         <value>This control only works with PNG images.</value>
     </data>
-    <data name="FieldMetadataMissingError_message" xml:space="preserve">
-        <value>Couldn\'t find the metadata of the field to validate the length.</value>
-    </data>
     <data name="FieldLengthError_message" xml:space="preserve">
         <value>Image content is greater than the size of the field. The size of the field should be increased, or a smaller image should be used.</value>
     </data>
     <data name="MaxFieldLengthError_message" xml:space="preserve">
         <value>Image content is greater than the maximum size of a Multiple Lines of Text field. A smaller image is required.</value>
     </data>
-
-    <data name="ImageTripleClickToClear_message" xml:space="preserve">
-        <value>Triple click to clear.</value>
-    </data>
-
     <data name="PickFileButton_message" xml:space="preserve">
         <value>Pick file</value>
     </data>
@@ -139,5 +129,4 @@
     <data name="OnlyPngImagesSupported_message" xml:space="preserve">
         <value>Only PNG Images are supported</value>
     </data>
-
 </root>
