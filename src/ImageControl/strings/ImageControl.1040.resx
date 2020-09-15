@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <xsd:schema id="root" 
+        xmlns="" 
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+        xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string" />
+                            <xsd:attribute name="type" type="xsd:string" />
+                            <xsd:attribute name="mimetype" type="xsd:string" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string" />
+                            <xsd:attribute name="name" type="xsd:string" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+
+    <!-- Custom -->
+    <data name="ImageControl_Display_Key" xml:space="preserve">
+        <value>Controllo dell'immagine</value>
+    </data>
+    <data name="ImageControl_Desc_Key" xml:space="preserve">
+        <value>Un controllo immagine da utilizzare con il campo Più righe di testo per visualizzare immagini PNG nel modulo</value>
+    </data>
+    <data name="Field_Display_Key" xml:space="preserve">
+        <value>Campo</value>
+    </data>
+    <data name="Field_Desc_Key" xml:space="preserve">
+        <value>Campo di più righe di testo che utilizzerà il controllo</value>
+    </data>
+    <data name="Length_Display_Key" xml:space="preserve">
+        <value>Lunghezza</value>
+    </data>
+    <data name="Length_Desc_Key" xml:space="preserve">
+        <value>Lunghezza del contenuto dell'immagine immesso nel controllo</value>
+    </data>
+    <data name="ImageBorder_Display_Key" xml:space="preserve">
+        <value>Bordo dell'immagine</value>
+    </data>
+    <data name="ImageBorder_Desc_Key" xml:space="preserve">
+        <value>Abilita o disabilita un bordo intorno all'immagine nel controllo</value>
+    </data>
+    <data name="ImageBorder_Yes_Display_Key" xml:space="preserve">
+        <value>sì</value>
+    </data>
+    <data name="ImageBorder_Yes_Desc_Key" xml:space="preserve">
+        <value>Visualizza un bordo intorno all'immagine</value>
+    </data>
+    <data name="ImageBorder_No_Display_Key" xml:space="preserve">
+        <value>No</value>
+    </data>
+    <data name="ImageBorder_No_Desc_Key" xml:space="preserve">
+        <value>Non visualizza un bordo intorno all'immagine</value>
+    </data>
+    <data name="DragImageHere_message" xml:space="preserve">
+        <value>Trascina un'immagine qui</value>
+    </data>
+    <data name="ClickToClear_message" xml:space="preserve">
+        <value>Chiara</value>
+    </data>
+    <data name="NoFileError_message" xml:space="preserve">
+        <value>Nessun file è stato trovato nel trascinamento della selezione.</value>
+    </data>
+    <data name="MultipleFileError_message" xml:space="preserve">
+        <value>È supportato solo il trascinamento / rilascio di un file.</value>
+    </data>
+    <data name="FileTypeError_message" xml:space="preserve">
+        <value>Questo controllo funziona solo con le immagini PNG.</value>
+    </data>
+    <data name="FieldLengthError_message" xml:space="preserve">
+        <value>Il contenuto dell'immagine è maggiore della dimensione del campo. La dimensione del campo dovrebbe essere aumentata o dovrebbe essere usata un'immagine più piccola.</value>
+    </data>
+    <data name="MaxFieldLengthError_message" xml:space="preserve">
+        <value>Il contenuto dell'immagine è maggiore della dimensione massima di un campo di più righe di testo. È necessaria un'immagine più piccola.</value>
+    </data>
+    <data name="PickFileButton_message" xml:space="preserve">
+        <value>Scegli file</value>
+    </data>
+    <data name="OnlyPickOneFile_message" xml:space="preserve">
+        <value>Scegli un solo file</value>
+    </data>
+    <data name="OnlyPngImagesSupported_message" xml:space="preserve">
+        <value>Sono supportate solo le immagini PNG</value>
+    </data>
+</root>
