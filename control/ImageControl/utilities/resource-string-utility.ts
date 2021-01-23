@@ -1,10 +1,10 @@
-export interface IOptions {
+export interface ResourceStringUtilityOptions {
     getResourceString(name: string): string;
 }
 
-export default class ResourceStringUtility {
+export class ResourceStringUtility {
 
-    constructor(options: IOptions) {
+    constructor(options: ResourceStringUtilityOptions) {
         // Info
         this.dragImageHere = options.getResourceString('DragImageHere_message');
         this.clickToClear = options.getResourceString('ClickToClear_message');

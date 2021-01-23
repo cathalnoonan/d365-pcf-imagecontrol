@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ResourceStringUtility, FieldLengthValidator, addDataImage, removeDataImage } from '../utilities';
 
-export interface IProps {
+export interface ImageControlComponentProps {
     value: string | null;
     fieldLength: number;
     maxFieldLength: number;
@@ -19,11 +19,11 @@ interface IState {
     value: string | null;
 }
 
-export default class ImageControlComponent extends React.Component<IProps, IState> {
+export class ImageControlComponent extends React.Component<ImageControlComponentProps, IState> {
 
     private fieldLengthValidator: FieldLengthValidator;
 
-    constructor(props: IProps) {
+    constructor(props: ImageControlComponentProps) {
         super(props);
         this.fieldLengthValidator = new FieldLengthValidator({ ...props });
         this.state = {

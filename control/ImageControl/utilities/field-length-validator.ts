@@ -1,16 +1,16 @@
 import { ResourceStringUtility } from './';
 
-export interface IOptions {
+export interface FieldLengthValidatorOptions {
     maxFieldLength: number;
     fieldLength: number;
     resourceStrings: ResourceStringUtility
 }
 
-export default class FieldLengthValidator {
+export class FieldLengthValidator {
 
-    private options: IOptions;
+    private options: FieldLengthValidatorOptions;
 
-    constructor(options: IOptions) {
+    constructor(options: FieldLengthValidatorOptions) {
         this.options = options;
     }
 
