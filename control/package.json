@@ -6,18 +6,17 @@
     "build": "pcf-scripts build",
     "clean": "pcf-scripts clean",
     "rebuild": "pcf-scripts rebuild",
-    "start": "pcf-scripts start",
-    "enable-custom-webpack-config": "node enableCustomWebpackConfig.js"
+    "start": "pcf-scripts start"
   },
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@types/node": "^10.17.33",
+    "@types/node": "^14.14.22",
     "@types/powerapps-component-framework": "^1.2.3",
     "@types/react": "^16.9.49",
-    "pcf-scripts": "^1.3.6",
-    "pcf-start": "^1.3.6"
+    "pcf-scripts": "^1.4.4",
+    "pcf-start": "^1.4.4"
   }
 }
