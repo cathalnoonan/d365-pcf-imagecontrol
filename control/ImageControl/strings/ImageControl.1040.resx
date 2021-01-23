@@ -103,7 +103,7 @@
         <value>Trascina un'immagine qui</value>
     </data>
     <data name="ClickToClear_message" xml:space="preserve">
-        <value>Chiara</value>
+        <value>Pulisci</value>
     </data>
     <data name="NoFileError_message" xml:space="preserve">
         <value>Nessun file è stato trovato nel trascinamento della selezione.</value>
