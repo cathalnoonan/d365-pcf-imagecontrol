@@ -3,6 +3,7 @@
   "version": "1.2.0",
   "description": "D365 PCF - Image control for Multiple Lines of Text fields.",
   "scripts": {
+    "prebuild": "rimraf out",
     "build": "pcf-scripts build",
     "clean": "pcf-scripts clean",
     "rebuild": "pcf-scripts rebuild",
@@ -17,6 +18,7 @@
     "@types/powerapps-component-framework": "^1.2.3",
     "@types/react": "^16.9.49",
     "pcf-scripts": "^1.4.4",
-    "pcf-start": "^1.4.4"
+    "pcf-start": "^1.4.4",
+    "rimraf": "^2.7.1"
   }
 }
