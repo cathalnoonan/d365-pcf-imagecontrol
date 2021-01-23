@@ -1,3 +1,3 @@
-export * from './base64-utility';
-export * from './field-length-validator';
-export * from './resource-string-utility';
+export * from './base64utility';
+export * from './fieldlengthvalidator';
+export * from './resourcestringutility';

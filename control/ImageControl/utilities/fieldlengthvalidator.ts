@@ -1,4 +1,4 @@
-import { ResourceStringUtility } from './';
+import { ResourceStringUtility } from '.';
 
 export interface FieldLengthValidatorOptions {
     maxFieldLength: number;

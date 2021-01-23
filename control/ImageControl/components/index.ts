@@ -1,1 +1,1 @@
-export * from './image-control';
+export * from './imagecontrol';
