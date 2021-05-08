@@ -1,129 +1,119 @@
-import * as React from 'react';
-import { ResourceStringUtility, FieldLengthValidator, addDataImage, removeDataImage } from '../utilities';
+import * as React from 'react'
+import classNames from 'classnames'
+
+import { ResourceStrings } from '../strings'
+import { FieldLengthValidator, addDataImage, removeDataImage, toBase64 } from '../utilities'
 
 export interface ImageControlComponentProps {
-    value: string | null;
-    fieldLength: number;
-    maxFieldLength: number;
-    resourceStrings: ResourceStringUtility;
-    displayBorder: boolean;
-    isDisabled: boolean;
-    editable: boolean;
-    toBase64: (file: File) => Promise<string>;
-    alertError: (message: string) => void;
-    notifyOutputChanged: () => void;
-    pickFile: () => Promise<ComponentFramework.FileObject[]>;
+    value: string | null
+    displayBorder: boolean
+    resourceStrings: ResourceStrings
+    attribute: {
+        fieldLength: number
+        maxFieldLength: number
+        isDisabled: boolean
+        isEditable: boolean
+    }
+    updateValue: (value: string | null) => void
+    pickFile: () => Promise<ComponentFramework.FileObject[]>
+    alertError: (message: string) => void
 }
 
-interface IState {
-    value: string | null;
-}
+export function ImageControlComponent(props: ImageControlComponentProps) {
+    const fieldLengthValidator = new FieldLengthValidator({
+        fieldLength: props.attribute.fieldLength,
+        maxFieldLength: props.attribute.maxFieldLength,
+        resourceStrings: props.resourceStrings,
+    })
 
-export class ImageControlComponent extends React.Component<ImageControlComponentProps, IState> {
+    // State
+    const [value, setValueInternal] = React.useState<string | null>(props.value)
+    const isEmpty = !value || value === 'val'   // 'val' is the default text in the test harness
+    const isEditable = !props.attribute.isDisabled && props.attribute.isEditable
+    const imageSrc = isEmpty ? '' : addDataImage(value!)
+    const updateValue = (value: string | null) => {
+        if (!isEditable) return
+        
+        if (!!value) {
+            value = removeDataImage(value)
+        }
+        props.updateValue(value)
+        setValueInternal(value)
+    }
 
-    private fieldLengthValidator: FieldLengthValidator;
+    // Styles
+    const labelClass = classNames({ 'label': true, 'hidden': !isEmpty })
+    const imageClass = classNames({ 'hidden': isEmpty, 'image-border': props.displayBorder })
+    const buttonClassClickToClear = classNames({ 'hidden': isEmpty })
+    const buttonClassPickFile = classNames({ 'hidden': !isEmpty })
 
-    constructor(props: ImageControlComponentProps) {
-        super(props);
-        this.fieldLengthValidator = new FieldLengthValidator({ ...props });
-        this.state = {
-            value: this.props.value,
+    // Events
+    const onDragOver = (ev: React.DragEvent<HTMLDivElement>) => {
+        ev.preventDefault()
+    }
+    const onDrop = async (ev: React.DragEvent<HTMLDivElement>) => {
+        ev.preventDefault()
+        
+        if (!isEditable) return
+        if (!ev.dataTransfer || !ev.dataTransfer.files) return // Don't alert as this is not an error condition        
+
+        try {
+            const files = ev.dataTransfer.files
+
+            // Guard: Exactly one file
+            if (files.length === 0) throw props.resourceStrings.noFileError
+            if (files.length > 1) throw props.resourceStrings.multipleFileError
+
+            const file = files[0]
+            
+            const base64 = await toBase64(file)
+            await fieldLengthValidator.validate(base64)
+            updateValue(base64)
+
+        } catch (errorMessage) {
+            props.alertError(errorMessage)
+        }
+    }
+    const onClickClear = (ev: React.MouseEvent) => {
+        updateValue(null)
+    }
+    const onClickPickFile = async (ev: React.MouseEvent): Promise<void> => {
+        if (!isEditable) return
+        
+        try {
+            const response = await props.pickFile()
+
+            // Guard: Exactly one file
+            if (response == null || response.length === 0) return//throw props.resourceStrings.noFileError
+            if (response.length !== 1) throw props.resourceStrings.onlyPickOneFileError
+
+            const fileContent = response[0].fileContent
+            await fieldLengthValidator.validate(fileContent)
+            updateValue(fileContent)
+
+        } catch (errorMessage) {
+            props.alertError(errorMessage)
         }
     }
 
-    render() {
-        return (
-            <div
-                className='ImageControl'
-                onDragOver={this.onDragOver}
-                onDrop={this.onDrop}
-            >
-                <img
-                    className={this.getImageClass()}
-                    src={this.getImageSource()}
-                />
-                <p
-                    className={this.getLabelClass()}
-                >
-                    {this.props.resourceStrings.dragImageHere}
-                </p>
-                <div className='button-container'>
-                    <button
-                        className={this.getClickToClearButtonClass()}
-                        onClick={this.onClickClearButton}
-                    >
-                        {this.props.resourceStrings.clickToClear}
-                    </button>
-                    <button
-                        className={this.getPickFileButtonClass()}
-                        onClick={this.onClickPickFileButton}
-                    >
-                        {this.props.resourceStrings.pickFile}
-                    </button>
-                </div>
+    // Render
+    return (
+        <div className='ImageControl' onDragOver={onDragOver} onDrop={onDrop}>
+            <img className={imageClass} src={imageSrc} />
+
+            <p className={labelClass}>
+                {props.resourceStrings.dragImageHere}
+            </p>
+
+            <div className='button-container'>
+                <button className={buttonClassClickToClear} onClick={onClickClear}>
+                    {props.resourceStrings.clickToClear}
+                </button>
+
+                <button className={buttonClassPickFile} onClick={onClickPickFile}>
+                    {props.resourceStrings.pickFile}
+                </button>
             </div>
-        );
-    }
-
-    // State
-    getValue = (): string | null => this.state.value;
-    setValue = (value: string | null): void => {
-        if (value) value = removeDataImage(value);
-        if (this.state.value === value) return;
-        this.setState({ value }, this.props.notifyOutputChanged);
-    }
-    private getImageSource = (): string => this.state.value && addDataImage(this.state.value) || '';
-    private isEmpty = (): boolean => !this.state.value || this.state.value === 'val';
-    private isEditable = (): boolean => !this.props.isDisabled && this.props.editable;
-
-    // Styles
-    private getLabelClass = (): string => 'label' + (this.isEmpty() ? '' : ' hidden');
-    private getImageClass = (): string => (this.isEmpty() ? ' hidden' : '') + (this.props.displayBorder ? ' image-border' : '');
-    private getClickToClearButtonClass = (): string => this.isEmpty() ? ' hidden' : '';
-    private getPickFileButtonClass = (): string => this.isEmpty() ? '' : ' hidden';
-
-    // Event handlers
-    private onDragOver = (ev: React.DragEvent): void => ev.preventDefault();
-    private onDropSuccess = (value: string): void => this.setValue(value);
-    private onDrop = (ev: React.DragEvent): void => {
-        ev.preventDefault();
-
-        if (!this.isEditable()) return;
-        if (!ev.dataTransfer || !ev.dataTransfer.files) return; // Don't alert as this is not an error condition        
-        const files = ev.dataTransfer.files;
-        if (files.length === 0) return this.props.alertError(this.props.resourceStrings.noFileError);
-        if (files.length > 1) return this.props.alertError(this.props.resourceStrings.multipleFileError);
-
-        const file = files[0];
-        if (file.type !== 'image/png') return this.props.alertError(this.props.resourceStrings.fileTypeError);
-
-        this.props.toBase64(file)
-            .then(this.fieldLengthValidator.validate)
-            .then(this.onDropSuccess)
-            .catch(this.props.alertError)
-    }
-    private onClickClearButton = (ev: React.MouseEvent): void => {
-        if (!this.isEditable()) return;
-        this.setValue(null);
-    }
-    private onClickPickFileButton = (ev: React.MouseEvent): void => {
-        if (!this.isEditable()) return;
-
-        const { alertError, resourceStrings } = this.props;
-
-        this.props.pickFile()
-            .then(response => {
-                return new Promise<string>((resolve, reject) => {
-                    if (response == null || response.length === 0) return reject();
-                    if (response.length !== 1) return reject(resourceStrings.onlyPickOneFileError);
-                    const { mimeType, fileContent } = response[0];
-                    if (mimeType !== 'image/png') return reject(resourceStrings.onlyPngImagesSupported);
-
-                    resolve(fileContent);
-                });
-            })
-            .then(fileContent => this.fieldLengthValidator.validate(fileContent))
-            .then(result => this.onDropSuccess(result))
-            .catch(message => alertError(message));
-    }
+        </div>
+    )
 }

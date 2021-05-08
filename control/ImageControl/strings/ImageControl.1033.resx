@@ -67,7 +67,7 @@
         <value>Image Control</value>
     </data>
     <data name="ImageControl_Desc_Key" xml:space="preserve">
-        <value>An image control for use with Multiple Lines of Text field to display PNG images on the form</value>
+        <value>An image control for use with Multiple Lines of Text field to display images on the form</value>
     </data>
     <data name="Field_Display_Key" xml:space="preserve">
         <value>Field</value>
@@ -111,9 +111,6 @@
     <data name="MultipleFileError_message" xml:space="preserve">
         <value>Only dragging/dropping one file is supported.</value>
     </data>
-    <data name="FileTypeError_message" xml:space="preserve">
-        <value>This control only works with PNG images.</value>
-    </data>
     <data name="FieldLengthError_message" xml:space="preserve">
         <value>Image content is greater than the size of the field. The size of the field should be increased, or a smaller image should be used.</value>
     </data>
@@ -125,8 +122,5 @@
     </data>
     <data name="OnlyPickOneFile_message" xml:space="preserve">
         <value>Only pick one file</value>
-    </data>
-    <data name="OnlyPngImagesSupported_message" xml:space="preserve">
-        <value>Only PNG Images are supported</value>
     </data>
 </root>

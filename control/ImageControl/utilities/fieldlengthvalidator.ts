@@ -1,31 +1,26 @@
-import { ResourceStringUtility } from '.';
+import { ResourceStrings } from '../strings'
 
 export interface FieldLengthValidatorOptions {
-    maxFieldLength: number;
-    fieldLength: number;
-    resourceStrings: ResourceStringUtility
+    maxFieldLength: number
+    fieldLength: number
+    resourceStrings: ResourceStrings
 }
 
 export class FieldLengthValidator {
 
-    private options: FieldLengthValidatorOptions;
+    constructor(private options: FieldLengthValidatorOptions) { }
 
-    constructor(options: FieldLengthValidatorOptions) {
-        this.options = options;
-    }
+    public validate = async (text: string): Promise<string> => {
+        
+        // Guard clauses
+        if (text.length > this.options.maxFieldLength) {
+            throw this.options.resourceStrings.maxFieldLengthError
+        } else if (text.length > this.options.fieldLength) {
+            throw this.options.resourceStrings.fieldLengthError
+        }
 
-    public validate = (text: string): Promise<string> => {
-        return new Promise<string>((resolve, reject) => {
-            const { maxFieldLengthError, fieldLengthError } = this.options.resourceStrings;
-
-            if (text.length > this.options.maxFieldLength) {
-                return reject(maxFieldLengthError);
-            } else if (text.length > this.options.fieldLength) {
-                return reject(fieldLengthError);
-            }
-
-            return resolve(text);
-        })
+        // Value is valid
+        return text
     }
 
 }

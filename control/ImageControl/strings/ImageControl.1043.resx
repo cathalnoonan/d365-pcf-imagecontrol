@@ -67,7 +67,7 @@
         <value>Beeldcontrole</value>
     </data>
     <data name="ImageControl_Desc_Key" xml:space="preserve">
-        <value>Een afbeeldingsbesturingselement voor gebruik met meerdere regels tekstveld om PNG-afbeeldingen op het formulier weer te geven</value>
+        <value>Een afbeeldingsbesturingselement voor gebruik met meerdere regels tekstveld om afbeeldingen op het formulier weer te geven</value>
     </data>
     <data name="Field_Display_Key" xml:space="preserve">
         <value>Veld</value>
@@ -111,9 +111,6 @@
     <data name="MultipleFileError_message" xml:space="preserve">
         <value>Alleen slepen en neerzetten van één bestand wordt ondersteund.</value>
     </data>
-    <data name="FileTypeError_message" xml:space="preserve">
-        <value>Dit besturingselement werkt alleen met PNG-afbeeldingen.</value>
-    </data>
     <data name="FieldLengthError_message" xml:space="preserve">
         <value>De inhoud van de afbeelding is groter dan de grootte van het veld. De grootte van het veld moet worden vergroot of er moet een kleinere afbeelding worden gebruikt.</value>
     </data>
@@ -125,8 +122,5 @@
     </data>
     <data name="OnlyPickOneFile_message" xml:space="preserve">
         <value>Kies slechts één bestand</value>
-    </data>
-    <data name="OnlyPngImagesSupported_message" xml:space="preserve">
-        <value>Alleen PNG-afbeeldingen worden ondersteund</value>
     </data>
 </root>

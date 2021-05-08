@@ -67,7 +67,7 @@
         <value>Controllo dell'immagine</value>
     </data>
     <data name="ImageControl_Desc_Key" xml:space="preserve">
-        <value>Un controllo immagine da utilizzare con il campo Più righe di testo per visualizzare immagini PNG nel modulo</value>
+        <value>Un controllo dell'immagine da utilizzare con il campo Più righe di testo per visualizzare le immagini nel modulo</value>
     </data>
     <data name="Field_Display_Key" xml:space="preserve">
         <value>Campo</value>
@@ -111,9 +111,6 @@
     <data name="MultipleFileError_message" xml:space="preserve">
         <value>È supportato solo il trascinamento / rilascio di un file.</value>
     </data>
-    <data name="FileTypeError_message" xml:space="preserve">
-        <value>Questo controllo funziona solo con le immagini PNG.</value>
-    </data>
     <data name="FieldLengthError_message" xml:space="preserve">
         <value>Il contenuto dell'immagine è maggiore della dimensione del campo. La dimensione del campo dovrebbe essere aumentata o dovrebbe essere usata un'immagine più piccola.</value>
     </data>
@@ -125,8 +122,5 @@
     </data>
     <data name="OnlyPickOneFile_message" xml:space="preserve">
         <value>Scegli un solo file</value>
-    </data>
-    <data name="OnlyPngImagesSupported_message" xml:space="preserve">
-        <value>Sono supportate solo le immagini PNG</value>
     </data>
 </root>
