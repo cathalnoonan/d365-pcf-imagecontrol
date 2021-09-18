@@ -12,3 +12,7 @@
 # Build directories
 **/obj
 **/bin
+
+
+# PCF on mac creates this folder
+**/~/
