@@ -29,8 +29,14 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
         const isEditable = context.parameters.field.security?.editable ?? true
         const resourceStrings = new ResourceStrings({ context, })
 
+        // PCF test harness uses 'val' as the default value for text fields.. don't use that for the image
+        let value = context.parameters.field.raw
+        if (value === 'val') {
+            value = ''
+        }
+
         const props: ImageControlComponentProps = {
-            value: context.parameters.field.raw,
+            value: value,
             displayBorder: context.parameters.imageBorder.raw === 'yes',
             resourceStrings,
             attribute: {
@@ -50,7 +56,7 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
                 return context.device.pickFile({
                     accept: 'image',
                     allowMultipleFiles: false,
-                    maximumAllowedFileSize: 1048576 // 1 MB
+                    maximumAllowedFileSize: MULTIPLE_LINES_OF_TEXT_MAX_LENGTH
                 })
             },
         }
@@ -81,43 +87,47 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
 
 // Test harness specific code
 if (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') {
-    // The implementation of the Device API in the test harness is not implemented properly, so this is
-    // here to allow testing the control in the harness
-    (<any>window).CustomControls.XrmProxy._deviceContext.pickFile = function (options: ComponentFramework.DeviceApi.PickFileOptions): Promise<ComponentFramework.FileObject[]> {
-        return new Promise<ComponentFramework.FileObject[]>((resolve, reject) => {
-            const input = document.createElement('input')
-            input.type = 'file'
-            input.accept = options.accept + '/*'
-            input.multiple = options.allowMultipleFiles
-            input.onchange = (e: Event) => {
-                if (!input.files) return reject()
-                const fileList = Array.from(input.files)
-                if (!fileList) return reject()
 
-                Promise.all(
-                    fileList.map(file =>
-                        new Promise<ComponentFramework.FileObject>((conversionResolve, conversionReject) => {
-                            toBase64(file)
-                                .then(base64 => conversionResolve({
-                                    fileContent: base64,
-                                    fileName: file.name,
-                                    fileSize: file.size,
-                                    mimeType: file.type,
-                                }))
-                                .catch(conversionReject)
-                        })
+    // Only do this for non debug session (eg: on-premise running on localhost would get through the IF above)
+    if ((<any>window).CustomControls?.XrmProxy?._deviceContext) {
+
+        // The implementation of the Device API in the test harness is not implemented properly, so this is
+        // here to allow testing the control in the harness
+        (<any>window).CustomControls.XrmProxy._deviceContext.pickFile = function (options: ComponentFramework.DeviceApi.PickFileOptions): Promise<ComponentFramework.FileObject[]> {
+            return new Promise<ComponentFramework.FileObject[]>((resolve, reject) => {
+                const input = document.createElement('input')
+                input.type = 'file'
+                input.accept = options.accept + '/*'
+                input.multiple = options.allowMultipleFiles
+                input.onchange = (e: Event) => {
+                    if (!input.files) return reject()
+                    const fileList = Array.from(input.files)
+                    if (!fileList) return reject()
+
+                    Promise.all(
+                        fileList.map(file =>
+                            new Promise<ComponentFramework.FileObject>((conversionResolve, conversionReject) => {
+                                toBase64(file)
+                                    .then(base64 => conversionResolve({
+                                        fileContent: base64,
+                                        fileName: file.name,
+                                        fileSize: file.size,
+                                        mimeType: file.type,
+                                    }))
+                                    .catch(conversionReject)
+                            })
+                        )
                     )
-                )
-                    .then(files => resolve(files))
-                    .catch(e => reject(e))
-            }
-            input.click()
-        })
-
+                        .then(files => resolve(files))
+                        .catch(e => reject(e))
+                }
+                input.click()
+            })
+        }
+        
+        // Force the max width of the property pane on the right
+        const pane = document.querySelector<HTMLDivElement>('.io-pane')
+        pane && (pane.style.maxWidth = '25%')
     }
 
-    // Force the max width of the property pane on the right
-    document.querySelectorAll<HTMLDivElement>('.io-pane').forEach(pane => {
-        pane.style.maxWidth = '25%';
-    })
 }

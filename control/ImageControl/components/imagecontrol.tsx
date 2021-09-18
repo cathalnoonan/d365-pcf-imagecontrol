@@ -27,18 +27,16 @@ export function ImageControlComponent(props: ImageControlComponentProps) {
     })
 
     // State
-    const [value, setValueInternal] = React.useState<string | null>(props.value)
-    const isEmpty = !value || value === 'val'   // 'val' is the default text in the test harness
+    const isEmpty = !props.value
     const isEditable = !props.attribute.isDisabled && props.attribute.isEditable
-    const imageSrc = isEmpty ? '' : addDataImage(value!)
+    const imageSrc = isEmpty ? '' : addDataImage(props.value!)
     const updateValue = (value: string | null) => {
         if (!isEditable) return
         
-        if (!!value) {
+        if (value) {
             value = removeDataImage(value)
         }
         props.updateValue(value)
-        setValueInternal(value)
     }
 
     // Styles
@@ -71,7 +69,9 @@ export function ImageControlComponent(props: ImageControlComponentProps) {
             updateValue(base64)
 
         } catch (errorMessage) {
+            // @ts-ignore
             props.alertError(errorMessage)
+            console.error(errorMessage)
         }
     }
     const onClickClear = (ev: React.MouseEvent) => {
@@ -92,6 +92,7 @@ export function ImageControlComponent(props: ImageControlComponentProps) {
             updateValue(fileContent)
 
         } catch (errorMessage) {
+            // @ts-ignore
             props.alertError(errorMessage)
         }
     }
