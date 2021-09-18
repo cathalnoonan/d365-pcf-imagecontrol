@@ -16,3 +16,4 @@
 
 # PCF on mac creates this folder
 **/~/
+.DS_Store
