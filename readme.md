@@ -25,6 +25,7 @@ The solution can be downloaded from the [Releases page](https://github.com/catha
 
 ## Development Docs
 - [Building the control](./docs/building.md)
+- [Adding translation](./docs/adding_translation.md)
 
 ---
 
