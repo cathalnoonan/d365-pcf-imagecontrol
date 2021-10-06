@@ -13,7 +13,7 @@ This will allow us to output the image in a word document, as shown in the examp
 
 ---
 
-## Download
+## Download
 
 The solution can be downloaded from the [Releases page](https://github.com/cathalnoonan/d365-pcf-imagecontrol/releases)
 

@@ -1,4 +1,4 @@
-# Configuration
+# Configuration
 
 The control can be added to "Multiple Lines of Text" fields.
 
