@@ -1,6 +1,6 @@
 # Installation
 
-The PCF is installed to an environment through a solution aip file
+The PCF is installed to an environment through a solution zip file
 
 The solution can be downloaded from the Releases page
 ([link](https://github.com/cathalnoonan/d365-pcf-imagecontrol/releases))
