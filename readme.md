@@ -29,5 +29,17 @@ The solution can be downloaded from the [Releases page](https://github.com/catha
 
 ---
 
+> **Note:** 
+>
+> The maximum number of characters allowed in the Multiple Lines of Text field is `1,048,576` characters, which translates to 1MB.
+> 
+> The Control is designed to work with images below this size.
+>
+> If images larger than this size are required, the out-of-the-box [Image](https://docs.microsoft.com/en-us/powerapps/developer/data-platform/image-attributes), or [File](https://docs.microsoft.com/en-us/powerapps/developer/data-platform/file-attributes) field types may be a more suitable alternative. 
+>
+> The Image and File field types will allow larger images to be uploaded.
+
+---
+
 ## License
 MIT
