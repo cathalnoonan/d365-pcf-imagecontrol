@@ -20,7 +20,13 @@
   <PropertyGroup>
     <SolutionRootPath>src</SolutionRootPath>
     <SolutionPackageType>Both</SolutionPackageType>
-    <SolutionPackageZipFilePath>bin\$(Configuration)\$(Name).zip</SolutionPackageZipFilePath>
+    
+    <!-- 
+      Set the output to the 'dist' folder.
+      Use this method rather than setting the working folder, so that only the zip file(s) is/are put in that folder.
+      This will be amended using 'directory.build.targets' to append the version number and "_managed".
+    -->
+    <SolutionPackageZipFilePath>..\dist\$(Name).zip</SolutionPackageZipFilePath>
   </PropertyGroup>
   
   <ItemGroup>
@@ -45,7 +51,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\control\project.pcfproj" />
+    <ProjectReference Include="..\control\control.pcfproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
