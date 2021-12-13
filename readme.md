@@ -31,7 +31,7 @@ The solution can be downloaded from the [Releases page](https://github.com/catha
 
 > **Note:** 
 >
-> The maximum number of characters allowed in the Multiple Lines of Text field is `1,048,576` characters, which translates to 1MB.
+> The maximum number of characters allowed in the Multiple Lines of Text field is `1,048,576` characters, which translates to 1MB. 
 > 
 > The Control is designed to work with images below this size.
 >
