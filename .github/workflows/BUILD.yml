@@ -7,44 +7,15 @@ on:
     branches: [ main ]
 
 jobs:
-
-  # build_windows:
-  #   runs-on: windows-latest
-
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-      
-  #     - name: Setup Node.js
-  #       uses: actions/setup-node@v2
-  #       with:
-  #         node-version: 16.x
-  #     - name: Setup dotnet
-  #       uses: actions/setup-dotnet@v1
-  #       with:
-  #         dotnet-version: 5.0.x
-
-  #     - name: Call build script
-  #       run: ./build.bat
-
-  #     - name: Get solution name
-  #       id: get-solution-name
-  #       run: echo "::set-output name=SOLUTION_NAME::$([System.IO.Path]::GetFileNameWithoutExtension($(Get-ChildItem -Path ./dist/*.zip -Name)))"
-
-  #     - name: 'Upload artifact'
-  #       uses: actions/upload-artifact@v2
-  #       with:
-  #         name: ${{ steps.get-solution-name.outputs.SOLUTION_NAME }}
-  #         path: ./dist/*_managed.zip
-  #         retention-days: 5
-  
   build_ubuntu:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      # Checkout code
+      - name: Checkout code
         uses: actions/checkout@v2
 
+      # Configure environment
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
@@ -54,13 +25,14 @@ jobs:
         with:
           dotnet-version: 5.0.x
 
+      # Build the project
       - name: Call build script
         run: ./build.sh
 
+      # Prepare artifact(s)
       - name: Get solution name
         id: get-solution-name
-        run: echo "::set-output name=SOLUTION_NAME::$(basename $(find ./dist -type f -iname "*") .zip)"  
-
+        run: echo "::set-output name=SOLUTION_NAME::$(basename $(find ./dist -type f -iname "*") .zip)"
       - name: 'Upload artifact'
         uses: actions/upload-artifact@v2
         with:
