@@ -19,7 +19,7 @@
   <!-- Solution Packager overrides -->
   <PropertyGroup>
     <SolutionRootPath>src</SolutionRootPath>
-    <SolutionPackageType>Both</SolutionPackageType>
+    <SolutionPackageType>Managed</SolutionPackageType>
     
     <!-- 
       Set the output to the 'dist' folder.
