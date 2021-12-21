@@ -38,6 +38,6 @@ jobs:
       - name: 'Upload artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ steps.get-solution-name.outputs.SOLUTION_NAME }}
+          name: artifacts
           path: ./dist/${{ steps.get-solution-name.outputs.SOLUTION_NAME }}.zip
           retention-days: 30
