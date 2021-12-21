@@ -123,4 +123,7 @@
     <data name="OnlyPickOneFile_message" xml:space="preserve">
         <value>Scegli un solo file</value>
     </data>
+    <data name="ProcessingLargeImagePleaseWait_message" xml:space="preserve">
+        <value>Elaborazione di un'immagine grande... attendere un momento</value>
+    </data>
 </root>

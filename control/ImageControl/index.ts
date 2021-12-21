@@ -56,7 +56,7 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
                 return context.device.pickFile({
                     accept: 'image',
                     allowMultipleFiles: false,
-                    maximumAllowedFileSize: MULTIPLE_LINES_OF_TEXT_MAX_LENGTH
+                    maximumAllowedFileSize: MULTIPLE_LINES_OF_TEXT_MAX_LENGTH * 15
                 })
             },
         }
@@ -86,7 +86,7 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
 }
 
 // Test harness specific code
-if (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') {
+if (window.location.port === '8181') {
 
     // Only do this for non debug session (eg: on-premise running on localhost would get through the IF above)
     if ((<any>window).CustomControls?.XrmProxy?._deviceContext) {
@@ -124,10 +124,10 @@ if (window.location.hostname === '127.0.0.1' || window.location.hostname === 'lo
                 input.click()
             })
         }
-        
+
         // Force the max width of the property pane on the right
         const pane = document.querySelector<HTMLDivElement>('.io-pane')
-        pane && (pane.style.maxWidth = '25%')
+        pane && (pane.style.minWidth = pane.style.maxWidth = '25%')
     }
 
 }

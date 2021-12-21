@@ -1,8 +1,9 @@
 import * as React from 'react'
 import classNames from 'classnames'
+import imageCompression from 'browser-image-compression'
 
 import { ResourceStrings } from '../strings'
-import { FieldLengthValidator, addDataImage, removeDataImage, toBase64 } from '../utilities'
+import { FieldLengthValidator, addDataImage, removeDataImage, toBase64, fromFileObject } from '../utilities'
 
 export interface ImageControlComponentProps {
     value: string | null
@@ -32,12 +33,13 @@ export function ImageControlComponent(props: ImageControlComponentProps) {
     const imageSrc = isEmpty ? '' : addDataImage(props.value!)
     const updateValue = (value: string | null) => {
         if (!isEditable) return
-        
+
         if (value) {
             value = removeDataImage(value)
         }
         props.updateValue(value)
     }
+    const [isProcessingLargeImage, setIsProcessingLargeImage] = React.useState<boolean | null>(null)
 
     // Styles
     const labelClass = classNames({ 'label': true, 'hidden': !isEmpty })
@@ -46,12 +48,26 @@ export function ImageControlComponent(props: ImageControlComponentProps) {
     const buttonClassPickFile = classNames({ 'hidden': !isEmpty })
 
     // Events
+    const processLargeImage = async (file: File): Promise<File> => {
+        if (file.size < props.attribute.maxFieldLength) {
+            return file
+        }
+
+        setIsProcessingLargeImage(true)
+        const compressedFile = await imageCompression(file, {
+            maxSizeMB: 0.8,
+            useWebWorker: true,
+            maxWidthOrHeight: 1024,
+        })
+        setIsProcessingLargeImage(false)
+        return compressedFile
+    }
     const onDragOver = (ev: React.DragEvent<HTMLDivElement>) => {
         ev.preventDefault()
     }
     const onDrop = async (ev: React.DragEvent<HTMLDivElement>) => {
         ev.preventDefault()
-        
+
         if (!isEditable) return
         if (!ev.dataTransfer || !ev.dataTransfer.files) return // Don't alert as this is not an error condition        
 
@@ -62,8 +78,8 @@ export function ImageControlComponent(props: ImageControlComponentProps) {
             if (files.length === 0) throw props.resourceStrings.noFileError
             if (files.length > 1) throw props.resourceStrings.multipleFileError
 
-            const file = files[0]
-            
+            const file = await processLargeImage(files[0])
+
             const base64 = await toBase64(file)
             await fieldLengthValidator.validate(base64)
             updateValue(base64)
@@ -71,7 +87,7 @@ export function ImageControlComponent(props: ImageControlComponentProps) {
         } catch (errorMessage) {
             // @ts-ignore
             props.alertError(errorMessage)
-            console.error(errorMessage)
+            console.error('IMAGE_CONTROL', { errorMessage })
         }
     }
     const onClickClear = (ev: React.MouseEvent) => {
@@ -79,25 +95,36 @@ export function ImageControlComponent(props: ImageControlComponentProps) {
     }
     const onClickPickFile = async (ev: React.MouseEvent): Promise<void> => {
         if (!isEditable) return
-        
+
         try {
             const response = await props.pickFile()
 
             // Guard: Exactly one file
-            if (response == null || response.length === 0) return//throw props.resourceStrings.noFileError
+            if (response == null || response.length === 0) return
             if (response.length !== 1) throw props.resourceStrings.onlyPickOneFileError
 
-            const fileContent = response[0].fileContent
+            const file = await processLargeImage(await fromFileObject(response[0]))
+
+            const fileContent = await toBase64(file)
             await fieldLengthValidator.validate(fileContent)
             updateValue(fileContent)
 
         } catch (errorMessage) {
             // @ts-ignore
             props.alertError(errorMessage)
+            console.error('IMAGE_CONTROL', { errorMessage })
         }
     }
 
     // Render
+    if (isProcessingLargeImage) {
+        return (
+            <div className='ImageControl processing' onDragOver={onDragOver} onDrop={onDrop}>
+                <label>{props.resourceStrings.processingLargeImagePleaseWait}</label>
+            </div>
+        )
+    }
+
     return (
         <div className='ImageControl' onDragOver={onDragOver} onDrop={onDrop}>
             <img className={imageClass} src={imageSrc} />

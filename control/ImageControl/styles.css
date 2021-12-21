@@ -45,3 +45,10 @@
     padding: 15px;
     border: 1px solid #555555;
 }
+
+.ImageControl.processing {
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
