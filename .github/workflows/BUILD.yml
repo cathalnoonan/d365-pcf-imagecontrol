@@ -4,7 +4,9 @@ on:
   workflow_dispatch:
     branches: [ main ]
   push:
-    branches: [ main ]
+    branches:
+    - main
+    - features/*
   pull_request:
     branches: [ main ]
 
@@ -32,12 +34,10 @@ jobs:
         run: ./build.sh
 
       # Prepare artifact(s)
-      - name: Get solution name
-        id: get-solution-name
-        run: echo "::set-output name=SOLUTION_NAME::$(basename $(find ./dist -type f -iname "*") .zip)"
+      - run: cp ./LICENSE ./dist
       - name: 'Upload artifact'
         uses: actions/upload-artifact@v2
         with:
           name: artifacts
-          path: ./dist/${{ steps.get-solution-name.outputs.SOLUTION_NAME }}.zip
+          path: ./dist/*
           retention-days: 30
