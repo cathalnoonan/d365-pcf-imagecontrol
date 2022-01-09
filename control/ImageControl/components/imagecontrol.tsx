@@ -9,6 +9,7 @@ export interface ImageControlComponentProps {
     value: string | null
     displayBorder: boolean
     resourceStrings: ResourceStrings
+    imageHeightCss: string
     attribute: {
         fieldLength: number
         maxFieldLength: number
@@ -125,9 +126,23 @@ export function ImageControlComponent(props: ImageControlComponentProps) {
         )
     }
 
+    // Either set the width/height to auto, and set the height as user specified
+    const imgStyles: React.CSSProperties = {}
+    if (props.imageHeightCss !== 'auto') {
+        imgStyles.height = props.imageHeightCss
+        imgStyles.maxHeight = props.imageHeightCss
+        imgStyles.width = 'auto'
+        imgStyles.maxWidth = '100%'
+    } else {
+        imgStyles.height = 'auto'
+        imgStyles.maxHeight = '100%'
+        imgStyles.width = '100%'
+        imgStyles.maxWidth = '100%'
+    }
+    
     return (
         <div className='ImageControl' onDragOver={onDragOver} onDrop={onDrop}>
-            <img className={imageClass} src={imageSrc} />
+            <img className={imageClass} src={imageSrc} style={imgStyles} />
 
             <p className={labelClass}>
                 {props.resourceStrings.dragImageHere}

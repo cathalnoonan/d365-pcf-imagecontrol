@@ -10,6 +10,11 @@
     text-align: center;
 }
 
+.ImageControl img { 
+    /* Centering: This will cater for scaling when 'max-height' is provided by as a ControlInput property. */
+    margin: auto;
+}
+
 .ImageControl .hidden {
     display: none !important;
 }

@@ -99,6 +99,12 @@
     <data name="ImageBorder_No_Desc_Key" xml:space="preserve">
         <value>Does not display a border around the image</value>
     </data>
+    <data name="ImageHeightCss_Display_Key" xml:space="preserve">
+        <value>Image height (CSS String)</value>
+    </data>
+    <data name="ImageHeightCss_Desc_Key" xml:space="preserve">
+        <value>Use this property to enter a string value that can be assigned to the 'height' CSS attribute, for example: "50rem" or "400px". Otherwise leave this empty.</value>
+    </data>
     <data name="DragImageHere_message" xml:space="preserve">
         <value>Drag and drop an image here</value>
     </data>
