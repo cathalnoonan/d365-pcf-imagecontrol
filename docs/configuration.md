@@ -32,6 +32,12 @@ The options available to configure the control are as follows:
   - The intention of this is to allow a customizer to alter the length of the Multiple Lines of Text field if there are many users below/close to the current length limit of the field
 - Image Border (required, input)
   - Decides whether to display a border around the image
+- Image Maximum Height (optional, input)
+  - Introduced in `v1.5.0`
+  - If configured, the control will limit the max-height of the image to the specified value
+  - This value could be in pixels, or a relative unit such as rem.
+  - For example `50rem` or `400px`
+  - To ignore this behavior, leave the field empty and it will use the maximum width available
 
 > **Note:**
 > 
@@ -57,6 +63,16 @@ Selecting `Yes` will display a border around the image
 
 ![Configure: With Image Border](./res/WithBorder.png)
 
+### Image Maximum Height (CSS String)
+
+To prevent images taking up too much space on the screen, the maximum height can be provided
+
+![Configure: Image Maximum height](./res/ConfigureImageMaximumHeight.png)
+
+Entering a value will limit the height of the image displayed
+
+Leaving this field empty will not limit the height of the image, instead the image will scale based on the available width
+
 ---
 
 > **Note:** 
@@ -66,7 +82,9 @@ Selecting `Yes` will display a border around the image
 > A suggestion to accept large images is to configure the multiple lines of text field to accept the maximum number
 > of characters possible.
 >
-> If images larger than the configured field length are added, the control will not be able to store the image.
+> If images larger than the configured field length are added, the image will be compressed since `v1.5.0`.
+>
+> In older versions of the control, larger images could not be used because an error would be thrown.
 
 ---
 
