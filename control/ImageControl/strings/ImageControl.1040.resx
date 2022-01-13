@@ -99,15 +99,15 @@
     <data name="ImageBorder_No_Desc_Key" xml:space="preserve">
         <value>Non visualizza un bordo intorno all'immagine</value>
     </data>
-    <data name="ImageHeightCss_Display_Key" xml:space="preserve">
-        <value>Altezza immagine (stringa CSS)</value>
+    <data name="ImageMaxHeightCss_Display_Key" xml:space="preserve">
+        <value>Altezza massima immagine (stringa CSS)</value>
     </data>
-    <data name="ImageHeightCss_Desc_Key" xml:space="preserve">
-        <value>Utilizza questa proprietà per inserire un valore di stringa che può essere assegnato all'attributo CSS 'altezza', ad esempio: "50rem" o "600px". Altrimenti lascia questo vuoto.</value>
+    <data name="ImageMaxHeightCss_Desc_Key" xml:space="preserve">
+        <value>Gebruik deze eigenschap om een tekenreekswaarde in te voeren die wordt gebruikt om de maximale hoogte van de afbeelding te beperken, bijvoorbeeld: "50rem" of "400px". Laat dit anders leeg.</value>
     </data>
     <data name="DragImageHere_message" xml:space="preserve">
         <value>Trascina un'immagine qui</value>
-    </data>
+    </data>   
     <data name="ClickToClear_message" xml:space="preserve">
         <value>Pulisci</value>
     </data>

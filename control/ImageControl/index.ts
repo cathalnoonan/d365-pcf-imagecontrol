@@ -34,16 +34,16 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
         if (value === 'val') {
             value = ''
         }
-        let imageHeightCss = context.parameters.imageHeightCss?.raw?.trim()
-        if (!imageHeightCss || imageHeightCss === 'val') {
-            imageHeightCss = 'auto'
+        let imageMaxHeightCss = context.parameters.imageMaxHeightCss?.raw?.trim()
+        if (!imageMaxHeightCss || imageMaxHeightCss === 'val') {
+            imageMaxHeightCss = 'auto'
         }
 
         const props: ImageControlComponentProps = {
             value,
             displayBorder: context.parameters.imageBorder.raw === 'yes',
             resourceStrings,
-            imageHeightCss,
+            imageMaxHeightCss,
             attribute: {
                 fieldLength: fieldMetadata?.MaxLength ?? 0,
                 maxFieldLength: MULTIPLE_LINES_OF_TEXT_MAX_LENGTH,

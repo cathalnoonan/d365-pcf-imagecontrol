@@ -3,7 +3,6 @@
     padding: 0;
     border: 0;
     outline: 0;
-    width: 100%;
     box-sizing: border-box;
     display: block;
     line-height: 1.5rem;
@@ -11,7 +10,7 @@
 }
 
 .ImageControl img { 
-    /* Centering: This will cater for scaling when 'max-height' is provided by as a ControlInput property. */
+    /* Centering: This will cater for centering when 'max-height' is provided by as a ControlInput property. */
     margin: auto;
 }
 

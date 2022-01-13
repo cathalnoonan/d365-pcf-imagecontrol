@@ -14,7 +14,7 @@
             <value name="No" display-name-key="ImageBorder_No_Display_Key" description-key="ImageBorder_No_Desc_Key">no</value>
         </property>
 
-        <property name="imageHeightCss" display-name-key="ImageHeightCss_Display_Key" description-key="ImageHeightCss_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
+        <property name="imageMaxHeightCss" display-name-key="ImageMaxHeightCss_Display_Key" description-key="ImageMaxHeightCss_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
 
         <resources>
             <code path="index.ts" order="1" />
