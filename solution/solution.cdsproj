@@ -8,7 +8,6 @@
   <Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Solution.props" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Solution.props')" />
 
   <PropertyGroup>
-    <Name>ImageControl</Name>
     <ProjectGuid>c0619df0-c4f9-4c80-b1da-111d1f9912b8</ProjectGuid>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <!--Remove TargetFramework when this is available in 16.1-->
@@ -19,14 +18,6 @@
   <!-- Solution Packager overrides -->
   <PropertyGroup>
     <SolutionRootPath>src</SolutionRootPath>
-    <SolutionPackageType>Managed</SolutionPackageType>
-    
-    <!-- 
-      Set the output to the 'dist' folder.
-      Use this method rather than setting the working folder, so that only the zip file(s) is/are put in that folder.
-      This will be amended using 'directory.build.targets' to append the version number and "_managed".
-    -->
-    <SolutionPackageZipFilePath>..\dist\$(Name).zip</SolutionPackageZipFilePath>
   </PropertyGroup>
   
   <ItemGroup>
