@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
     <control namespace="Cathal" constructor="ImageControl" display-name-key="ImageControl_Display_Key" description-key="ImageControl_Desc_Key" control-type="standard"
-        version="1.6.0">
+        version="1.7.0">
 
         <property name="field" display-name-key="Field_Display_Key" description-key="Field_Desc_Key" of-type="Multiple" usage="bound" required="true" />
 
@@ -20,10 +20,10 @@
             <code path="index.ts" order="1" />
             <css path="styles.css" order="1" />
 
-            <resx path="strings/ImageControl.1043.resx" version="1.6.0" />
-            <resx path="strings/ImageControl.1040.resx" version="1.6.0" />
-            <resx path="strings/ImageControl.1033.resx" version="1.6.0" />
-            <resx path="strings/ImageControl.3082.resx" version="1.6.0" />
+            <resx path="strings/ImageControl.1043.resx" version="1.7.0" />
+            <resx path="strings/ImageControl.1040.resx" version="1.7.0" />
+            <resx path="strings/ImageControl.3082.resx" version="1.7.0" />
+            <resx path="strings/ImageControl.1033.resx" version="1.7.0" />
         </resources>
 
         <feature-usage>
