@@ -132,4 +132,7 @@
     <data name="ProcessingLargeImagePleaseWait_message" xml:space="preserve">
         <value>Processing large image... please wait a moment</value>
     </data>
+    <data name="NoImageProvided_message" xml:space="preserve">
+        <value>No image provided.</value>
+    </data>
 </root>

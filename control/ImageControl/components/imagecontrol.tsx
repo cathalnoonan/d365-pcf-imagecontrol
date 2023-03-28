@@ -141,19 +141,27 @@ export function ImageControlComponent(props: ImageControlComponentProps) {
         <div className='ImageControl' onDragOver={onDragOver} onDrop={onDrop}>
             <img className={imageClass} src={imageSrc} style={imgStyles} />
 
-            <p className={labelClass}>
-                {props.resourceStrings.dragImageHere}
-            </p>
+            {isEditable ? (
+                <p className={labelClass}>
+                    {props.resourceStrings.dragImageHere}
+                </p>
+            ) : (
+                <p className={labelClass}>
+                    {props.resourceStrings.noImageProvided}
+                </p>
+            )}
 
-            <div className='button-container'>
-                <button className={buttonClassClickToClear} onClick={onClickClear}>
-                    {props.resourceStrings.clickToClear}
-                </button>
+            {isEditable && (
+                <div className='button-container'>
+                    <button className={buttonClassClickToClear} onClick={onClickClear}>
+                        {props.resourceStrings.clickToClear}
+                    </button>
 
-                <button className={buttonClassPickFile} onClick={onClickPickFile}>
-                    {props.resourceStrings.pickFile}
-                </button>
-            </div>
+                    <button className={buttonClassPickFile} onClick={onClickPickFile}>
+                        {props.resourceStrings.pickFile}
+                    </button>
+                </div>
+            )}
         </div>
     )
 }

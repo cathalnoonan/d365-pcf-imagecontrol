@@ -17,6 +17,7 @@ export class ResourceStrings {
         this.clickToClear = getResourceString('ClickToClear_message')
         this.pickFile = getResourceString('PickFileButton_message')
         this.processingLargeImagePleaseWait = getResourceString('ProcessingLargeImagePleaseWait_message')
+        this.noImageProvided = getResourceString('NoImageProvided_message')
 
         // Error
         this.noFileError = getResourceString('NoFileError_message')
@@ -35,6 +36,7 @@ export class ResourceStrings {
     readonly clickToClear: string
     readonly pickFile: string
     readonly processingLargeImagePleaseWait: string
+    readonly noImageProvided: string
 
     // Errors
     readonly noFileError: string
