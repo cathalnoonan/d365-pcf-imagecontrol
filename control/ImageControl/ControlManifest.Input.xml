@@ -13,6 +13,7 @@
     <resources>
       <code path="index.ts" order="1" />
       <css path="styles.css" order="1" />
+      <resx path="strings/ImageControl.1031.resx" version="1.8.0" />
       <resx path="strings/ImageControl.1043.resx" version="1.8.0" />
       <resx path="strings/ImageControl.1040.resx" version="1.8.0" />
       <resx path="strings/ImageControl.3082.resx" version="1.8.0" />

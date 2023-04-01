@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <xsd:schema id="root"
+        xmlns=""
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string" />
+                            <xsd:attribute name="type" type="xsd:string" />
+                            <xsd:attribute name="mimetype" type="xsd:string" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string" />
+                            <xsd:attribute name="name" type="xsd:string" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+
+    <!-- Custom -->
+    <data name="ImageControl_Display_Key" xml:space="preserve">
+        <value>Bildkontrolle</value>
+    </data>
+    <data name="ImageControl_Desc_Key" xml:space="preserve">
+        <value>Ein Bildsteuerelement zur Verwendung mit dem Feld "Mehrere Textzeilen", um Bilder auf dem Formular anzuzeigen</value>
+    </data>
+    <data name="Field_Display_Key" xml:space="preserve">
+        <value>Datenfeld</value>
+    </data>
+    <data name="Field_Desc_Key" xml:space="preserve">
+        <value>Feld mit mehreren Textzeilen, das das Steuerelement verwendet</value>
+    </data>
+    <data name="Length_Display_Key" xml:space="preserve">
+        <value>Länge</value>
+    </data>
+    <data name="Length_Desc_Key" xml:space="preserve">
+        <value>Länge des im Steuerelement eingetragenen Bildinhalts</value>
+    </data>
+    <data name="ImageBorder_Display_Key" xml:space="preserve">
+        <value>Bildrand</value>
+    </data>
+    <data name="ImageBorder_Desc_Key" xml:space="preserve">
+        <value>Aktivieren oder deaktivieren Sie einen Rahmen um das Bild im Steuerelement</value>
+    </data>
+    <data name="ImageBorder_Yes_Display_Key" xml:space="preserve">
+        <value>Ja</value>
+    </data>
+    <data name="ImageBorder_Yes_Desc_Key" xml:space="preserve">
+        <value>Zeigt einen Rahmen um das Bild an</value>
+    </data>
+    <data name="ImageBorder_No_Display_Key" xml:space="preserve">
+        <value>Nein</value>
+    </data>
+    <data name="ImageBorder_No_Desc_Key" xml:space="preserve">
+        <value>Zeigt keinen Rahmen um das Bild an</value>
+    </data>
+    <data name="ImageMaxHeightCss_Display_Key" xml:space="preserve">
+        <value>Maximale Bildhöhe (CSS-String)</value>
+    </data>
+    <data name="ImageMaxHeightCss_Desc_Key" xml:space="preserve">
+        <value>Verwenden Sie diese Eigenschaft, um einen Zeichenfolgenwert einzugeben, der verwendet wird, um die maximale Höhe des Bilds zu begrenzen, zum Beispiel: "50rem" oder "400px". Andernfalls lassen Sie dies leer.</value>
+    </data>
+    <data name="DragImageHere_message" xml:space="preserve">
+        <value>Bild hier einfügen und ablegen</value>
+    </data>
+    <data name="ClickToClear_message" xml:space="preserve">
+        <value>Entfernen</value>
+    </data>
+    <data name="NoFileError_message" xml:space="preserve">
+        <value>Beim Drag &amp; Drop wurde keine Datei gefunden.</value>
+    </data>
+    <data name="MultipleFileError_message" xml:space="preserve">
+        <value>Es wird nur das Ziehen &amp; Ablegen einer Datei unterstützt.</value>
+    </data>
+    <data name="FieldLengthError_message" xml:space="preserve">
+        <value>Der Bildinhalt ist größer als die Feldgröße. Das Feld sollte vergrößert oder ein kleineres Bild verwendet werden.</value>
+    </data>
+    <data name="MaxFieldLengthError_message" xml:space="preserve">
+        <value>Der Bildinhalt ist größer als die maximale Größe eines Felds mit mehreren Textzeilen. Ein kleineres Bild ist erforderlich.</value>
+    </data>
+    <data name="PickFileButton_message" xml:space="preserve">
+        <value>Datei auswählen</value>
+    </data>
+    <data name="OnlyPickOneFile_message" xml:space="preserve">
+        <value>Wählen Sie nur eine Datei aus</value>
+    </data>
+    <data name="ProcessingLargeImagePleaseWait_message" xml:space="preserve">
+        <value>Großes Bild wird verarbeitet ... bitte warten Sie einen Moment</value>
+    </data>
+    <data name="NoImageProvided_message" xml:space="preserve">
+        <value>Kein Bild bereitgestellt.</value>
+    </data>
+</root>
