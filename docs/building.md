@@ -3,8 +3,8 @@
 ## Prerequisites
 - Node.JS & npm
   > Download link: [https://nodejs.org/en/](https://nodejs.org/en/)
-- dotnet 5
-  > Download link: [https://dotnet.microsoft.com/download/dotnet/5.0](https://dotnet.microsoft.com/download/dotnet/5.0)
+- dotnet 6
+  > Download link: [https://dotnet.microsoft.com/download/dotnet/6.0](https://dotnet.microsoft.com/download/dotnet/6.0)
 
 ---
 
@@ -17,9 +17,10 @@ There are two main aspects to the repo:
   - Built using the dotnet CLI
   - **Building the solution also builds the control**
 
-Build scripts to automate the build process are done using the scripts at the root of the repo:
-- `build.bat` - builds the solution (when using Windows)
-- `build.sh` - builds the solution (when using Mac)
+To build the control, run the following command at the root of the repository:
+- ```sh
+  dotnet build
+  ```
 
 After the control is built, it can be imported to the Dynamics environment using your method of choice:
 - Classic solution explorer
