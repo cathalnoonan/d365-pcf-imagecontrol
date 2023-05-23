@@ -1,6 +1,7 @@
 # D365 PCF - Image Control
 
 [![Build](https://github.com/cathalnoonan/d365-pcf-imagecontrol/actions/workflows/BUILD.yml/badge.svg)](https://github.com/cathalnoonan/d365-pcf-imagecontrol/actions/workflows/BUILD.yml)
+[![Github All Releases](https://img.shields.io/github/downloads/cathalnoonan/d365-pcf-imagecontrol/total.svg)]()
 
 ## Image control for Multiple Lines of Text fields
 This control can be added as a custom control for a Multiple Lines of Text field to display the contents as an image
