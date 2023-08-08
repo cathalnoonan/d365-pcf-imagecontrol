@@ -50,7 +50,9 @@ export function ImageControlComponent(props: ImageControlComponentProps) {
 
     // Events
     const processLargeImage = async (file: File): Promise<File> => {
-        if (file.size < props.attribute.maxFieldLength) {
+        // Chromium browsers started setting 'size=0' for the drag-and-drop files.
+        // Use imageCompression if the size of the file is zero (because it's probably not actually zero).
+        if (file.size !== 0 && file.size < props.attribute.maxFieldLength) {
             return file
         }
 
@@ -70,7 +72,7 @@ export function ImageControlComponent(props: ImageControlComponentProps) {
         ev.preventDefault()
 
         if (!isEditable) return
-        if (!ev.dataTransfer || !ev.dataTransfer.files) return // Don't alert as this is not an error condition        
+        if (!ev.dataTransfer || !ev.dataTransfer.files) return // Don't alert as this is not an error condition
 
         try {
             const files = ev.dataTransfer.files
