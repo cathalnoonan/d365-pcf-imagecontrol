@@ -1,18 +1,17 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-**/node_modules
+/node_modules
 
 # generated directory
-**/generated
+#**/generated
 
 # output directory
-**/out
+/out
 
-# Build directories
-**/obj
-**/bin
-dist/
+# msbuild output directories
+/bin
+/obj
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
