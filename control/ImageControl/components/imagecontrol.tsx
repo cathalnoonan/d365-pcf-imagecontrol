@@ -56,12 +56,27 @@ export function ImageControlComponent(props: ImageControlComponentProps) {
             return file
         }
 
+        // Issue #30:
+        // Huge images are sometimes not compressed below the provided size.
+        // Attempt to compress again if the image is still too big.
         setIsProcessingLargeImage(true)
-        const compressedFile = await imageCompression(file, {
-            maxSizeMB: 0.8,
+        let compressedFile = await imageCompression(file, {
+            maxSizeMB: 0.6,
             useWebWorker: true,
             maxWidthOrHeight: 1024,
         })
+        try {
+            fieldLengthValidator.validate(await toBase64(compressedFile))
+        }
+        catch (errorMessage) {
+            // Retry once. Don't call this function recursively in case the issue reoccurs.
+            console.warn('IMAGE_CONTROL', 'large image detected, trying to compress again')
+            compressedFile = await imageCompression(compressedFile, {
+                maxSizeMB: 0.5,
+                useWebWorker: true,
+                maxWidthOrHeight: 720,
+            })
+        }
         setIsProcessingLargeImage(false)
         return compressedFile
     }
@@ -87,9 +102,13 @@ export function ImageControlComponent(props: ImageControlComponentProps) {
             await fieldLengthValidator.validate(base64)
             updateValue(base64)
 
-        } catch (errorMessage) {
-            // @ts-ignore
-            props.alertError(errorMessage)
+        } catch (errorMessage: any) {
+            if (errorMessage && errorMessage.message && typeof(errorMessage.message) === 'string') {
+                props.alertError(errorMessage.message)
+            } else {
+                // @ts-ignore
+                props.alertError(errorMessage)
+            }
             console.error('IMAGE_CONTROL', { errorMessage })
         }
     }
@@ -112,9 +131,13 @@ export function ImageControlComponent(props: ImageControlComponentProps) {
             await fieldLengthValidator.validate(fileContent)
             updateValue(fileContent)
 
-        } catch (errorMessage) {
-            // @ts-ignore
-            props.alertError(errorMessage)
+        } catch (errorMessage: any) {
+            if (errorMessage && errorMessage.message && typeof(errorMessage.message) === 'string') {
+                props.alertError(errorMessage.message)
+            } else {
+                // @ts-ignore
+                props.alertError(errorMessage)
+            }
             console.error('IMAGE_CONTROL', { errorMessage })
         }
     }
@@ -138,7 +161,7 @@ export function ImageControlComponent(props: ImageControlComponentProps) {
         imgStyles.width = '100%'
         imgStyles.maxWidth = '100%'
     }
-    
+
     return (
         <div className='ImageControl' onDragOver={onDragOver} onDrop={onDrop}>
             <img className={imageClass} src={imageSrc} style={imgStyles} />

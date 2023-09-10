@@ -61,7 +61,7 @@ export class ImageControl implements ComponentFramework.StandardControl<IInputs,
                 return context.device.pickFile({
                     accept: 'image',
                     allowMultipleFiles: false,
-                    maximumAllowedFileSize: MULTIPLE_LINES_OF_TEXT_MAX_LENGTH * 15
+                    maximumAllowedFileSize: MULTIPLE_LINES_OF_TEXT_MAX_LENGTH * 150
                 })
             },
         }
