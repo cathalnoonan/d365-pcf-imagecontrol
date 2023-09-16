@@ -21,7 +21,7 @@ export function toBase64(file: File): Promise<string> {
 export async function fromFileObject(fileObject: ComponentFramework.FileObject): Promise<File> {
     const res = await fetch(addDataImage(fileObject.fileContent))
     const blob = await res.blob()
-    
+
     const file = new File([blob], fileObject.fileName, { type: fileObject.mimeType })
 
     // TODO: Resolve error in Dynamics 365 apps for iOS.

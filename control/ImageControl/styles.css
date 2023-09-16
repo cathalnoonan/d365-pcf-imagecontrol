@@ -9,7 +9,7 @@
     text-align: center;
 }
 
-.ImageControl img { 
+.ImageControl img {
     /* Centering: This will cater for centering when 'max-height' is provided by as a ControlInput property. */
     margin: auto;
 }

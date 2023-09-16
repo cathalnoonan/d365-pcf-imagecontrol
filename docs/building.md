@@ -10,11 +10,11 @@
 
 There are two main aspects to the repo:
 - `control/`:
-  - Contains the PCF source code and configuration files
-  - Built using an npm script
+  - Contains the PCF source code and configuration files.
+  - Built using an npm script.
 - `solution/`:
-  - Contains the solution metadata, and a reference to the PCF control
-  - Built using the dotnet CLI
+  - Contains the solution metadata, and a reference to the PCF control.
+  - Built using the dotnet CLI.
   - **Building the solution also builds the control**
 
 To build the control, run the following command at the root of the repository:
@@ -23,8 +23,8 @@ To build the control, run the following command at the root of the repository:
   ```
 
 After the control is built, it can be imported to the Dynamics environment using your method of choice:
-- Classic solution explorer
-- Maker portal [https://make.powerapps.com](https://make.powerapps.com) (online only)
+- Classic solution explorer.
+- Maker portal [https://make.powerapps.com](https://make.powerapps.com) (online only).
 
 ---
 
