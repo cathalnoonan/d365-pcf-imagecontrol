@@ -1,0 +1,33 @@
+name: Close stale issues
+on:
+  schedule:
+    - cron: 30 10 * * *
+
+jobs:
+  close-issues:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/stale@v8
+        with:
+          # Issue properties
+          stale-issue-label: stale
+          days-before-issue-stale: 30
+          days-before-issue-close: 7
+          stale-issue-message: |
+            This issue was marked as stale because it has been open for 30 days with no activity.
+            Remove stale label or comment or this will be closed in 7 days.
+          close-issue-message: |
+            This issue was closed because it has been inactive for 7 days since being marked as stale.
+
+          # PR properties
+          stale-pr-label: stale
+          days-before-pr-stale: 45
+          days-before-pr-close: -1
+          stale-pr-message: |
+            This PR is stale because it has been open 45 days with no activity.
+
+          # GitHub token
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
