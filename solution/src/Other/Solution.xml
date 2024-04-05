@@ -5,7 +5,7 @@
     <UniqueName>ImageControl</UniqueName>
     <LocalizedNames>
       <!-- Localized Solution Name in language code -->
-      <LocalizedName description="ImageControl" languagecode="1033" />
+      <LocalizedName description="ImageControl. https://github.com/cathalnoonan/d365-pcf-imagecontrol" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
     <Version>1.8.1</Version>
