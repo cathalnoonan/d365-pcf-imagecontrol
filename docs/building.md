@@ -3,8 +3,8 @@
 ## Prerequisites
 - Node.JS & npm
   > Download link: [https://nodejs.org/en/](https://nodejs.org/en/)
-- dotnet 6
-  > Download link: [https://dotnet.microsoft.com/download/dotnet/6.0](https://dotnet.microsoft.com/download/dotnet/6.0)
+- dotnet 8
+  > Download link: [https://dotnet.microsoft.com/download/dotnet/8.0](https://dotnet.microsoft.com/download/dotnet/8.0)
 
 ---
 
