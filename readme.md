@@ -1,6 +1,6 @@
 # D365 PCF - Image Control
 
-[![Build](https://github.com/cathalnoonan/d365-pcf-imagecontrol/actions/workflows/BUILD.yml/badge.svg)](https://github.com/cathalnoonan/d365-pcf-imagecontrol/actions/workflows/BUILD.yml)
+[![Build](https://github.com/cathalnoonan/d365-pcf-imagecontrol/actions/workflows/build.yml/badge.svg)](https://github.com/cathalnoonan/d365-pcf-imagecontrol/actions/workflows/build.yml)
 [![Github All Releases](https://img.shields.io/github/downloads/cathalnoonan/d365-pcf-imagecontrol/total.svg)]()
 
 ## Image control for Multiple Lines of Text fields
