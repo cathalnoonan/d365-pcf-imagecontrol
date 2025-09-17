@@ -1,6 +1,6 @@
 {
     "name": "d365-pcf-imagecontrol",
-    "version": "1.8.2",
+    "version": "1.8.3",
     "description": "D365 PCF - Image control for Multiple Lines of Text fields.",
     "license": "MIT",
     "scripts": {
